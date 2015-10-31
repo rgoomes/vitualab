@@ -24,6 +24,12 @@ Assets/AssetStoreTools*
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+# Executables
+*.exe
+
+# Binary Folder
+vitualab_Data/
+
 # Garbage
 .DS_Store
 .DS_Store?
