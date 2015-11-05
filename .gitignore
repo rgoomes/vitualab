@@ -30,6 +30,18 @@ sysinfo.txt
 # Binary Folder
 vitualab_Data/
 
+# Leap Core Assets
+Assets/Gizmos.meta
+Assets/Gizmos/
+Assets/LeapMotion.meta
+Assets/LeapMotion/
+Assets/LeapMotionVR.meta
+Assets/LeapMotionVR/
+Assets/OVR.meta
+Assets/OVR/
+Assets/Plugins.meta
+Assets/Plugins/
+
 # Garbage
 .DS_Store
 .DS_Store?
