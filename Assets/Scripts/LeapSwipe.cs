@@ -11,10 +11,9 @@ public class LeapSwipe : MonoBehaviour {
 		controller.Config.SetFloat("Gesture.Swipe.MinLength", 100.0f);
 		controller.Config.SetFloat("Gesture.Swipe.MinVelocity", 100.0f);
 		controller.Config.Save();
-		
 	}
-	
-	void Update(){
+
+	void listenGestures(){
 		Frame frame = controller.Frame();
 		GestureList list = frame.Gestures();
 		
@@ -24,7 +23,7 @@ public class LeapSwipe : MonoBehaviour {
 			if(g.Type == Gesture.GestureType.TYPESWIPE){
 				SwipeGesture Swipe = new SwipeGesture(g);
 				Vector swipeDirection = Swipe.Direction;
-
+				
 				if(swipeDirection.x < 0)
 					Debug.Log("Left Swipe");
 				else if(swipeDirection.x > 0)
@@ -36,7 +35,10 @@ public class LeapSwipe : MonoBehaviour {
 					Debug.Log("Up Swipe");
 				*/
 			}
-			
 		}
+	}
+	
+	void Update(){
+		listenGestures();
 	}
 }
