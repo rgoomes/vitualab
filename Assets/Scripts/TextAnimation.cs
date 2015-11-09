@@ -5,6 +5,7 @@ public class TextAnimation : MonoBehaviour {
 
 	public GameObject controlPanel;
 	public GameObject optionsPanel;
+	public GameObject successPanel;
 
 	public float speed; /* animation speed */
 	public float radius; /* bound of animation */
@@ -24,7 +25,7 @@ public class TextAnimation : MonoBehaviour {
 		acc = 0; /* initial accelaration */
 
 		if(controlPanel != null && optionsPanel != null)
-			sc = new StateController(controlPanel, optionsPanel);
+			sc = new StateController(controlPanel, optionsPanel, successPanel);
 	}
 	
 	// Update is called once per frame

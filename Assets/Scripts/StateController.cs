@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class StateController {
+	const int SUCCESS_SCREEN = -2;
 	const int OPTIONS_SCREEN = -1;
 	const int MAIN_SCREEN    =  0;
 	const int TUT0_SCREEN    =  1; // ZOOM
@@ -10,27 +11,36 @@ public class StateController {
 	const int TUT2_SCREEN    =  3; // CHANGE
 	const int TUT3_SCREEN    =  4; // PICK
 	const int TUT4_SCREEN    =  5; // CIRCULAR
-	const int LABORATORY     = 10;
+	const int LABORATORY     =  6;
 
 	int place, last_place;
 	
 	GameObject controlPanel;
 	GameObject optionsPanel;
-	
+	GameObject successPanel;
+
 	List<Animation> animations;
-	List<string> animationStrings;
+	List<string> tutorialAnimations, toMainAnimations;
 	
-	public StateController(GameObject cp, GameObject op){
+	public StateController(GameObject cp, GameObject op, GameObject sp){
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
 		this.optionsPanel = op;
-		
+		this.successPanel = sp;
+
 		animations = new List<Animation>();
 		this.animations.Add(op.GetComponent<Animation>());
 		this.animations.Add(cp.GetComponent<Animation>());
+		this.animations.Add(sp.GetComponent<Animation>());
 
-		animationStrings = new List<string>(new string[] { 
+		tutorialAnimations = new List<string>(new string[] {
 			"goto_rotate", "goto_switch", "goto_pick", "goto_circular"
+		});
+
+		toMainAnimations = new List<string>(new string[] {
+			"",
+			"main_from_zoom", "main_from_rotate",   "main_from_switch",
+			"main_from_pick", "main_from_circular", "main_from_lab"
 		});
 	}
 	
@@ -111,6 +121,47 @@ public class StateController {
 
 		this.setLastPlace(getPlace());
 		this.setPlace(getPlace()+1);
-		controlPanel.GetComponent<Animation>().Play(animationStrings[getPlace() - 2]);
+		controlPanel.GetComponent<Animation>().Play(tutorialAnimations[getPlace() - 2]);
+	}
+
+	public void successTutorial(){
+		if(!this.canAnimate())
+			return;
+		if(getPlace() < TUT0_SCREEN || getPlace() > TUT3_SCREEN)
+			return;
+
+		successPanel.GetComponent<Animation>().Play("success");
+	}
+
+	public void endedTutorial(){
+		if(!this.canAnimate())
+			return;
+		if(getPlace() != TUT4_SCREEN)
+			return;
+
+		this.setLastPlace(TUT4_SCREEN);
+		this.setPlace(LABORATORY);
+		// ANIMATION: CONGRATULATIONS YOU'VE MASTERED THE LEAPMOTION..
+	}
+
+	public void backToMainMenu(){
+		if(!this.canAnimate())
+			return;
+		if(getPlace() != OPTIONS_SCREEN)
+			return;
+		if(getLastPlace() < MAIN_SCREEN || getLastPlace() > LABORATORY)
+			return;
+
+		int old_place = getPlace();
+		int old_last = getLastPlace();
+		this.setLastPlace(old_place);
+		this.setPlace(MAIN_SCREEN);
+
+		optionsPanel.GetComponent<Animation>().Play("hide_options");
+
+		if(old_last == MAIN_SCREEN)
+			return;
+
+		controlPanel.GetComponent<Animation>().Play(toMainAnimations[old_last]);
 	}
 }

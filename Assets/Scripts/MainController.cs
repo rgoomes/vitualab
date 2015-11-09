@@ -5,6 +5,7 @@ using Leap;
 public class MainController : MonoBehaviour {
 	public GameObject controlPanel;
 	public GameObject optionsPanel;
+	public GameObject successPanel;
 
 	Controller ct;
 	StateController sc;
@@ -23,7 +24,7 @@ public class MainController : MonoBehaviour {
 		ct.Config.SetFloat("Gesture.Swipe.MinVelocity", 100.0f);
 		ct.Config.Save();
 
-		sc = new StateController(controlPanel, optionsPanel);
+		sc = new StateController(controlPanel, optionsPanel, successPanel);
 
 		// horzFreq = vertFreq = 0;
 	}
@@ -43,6 +44,7 @@ public class MainController : MonoBehaviour {
 
 	void rightSwipe(){
 		sc.skipTutorial();
+		sc.backToMainMenu();
 	}
 
 	void listenGestures(){
@@ -74,14 +76,17 @@ public class MainController : MonoBehaviour {
 
 		// Test show/hide options. TODO: REMOVE THIS LATER
 		if(Input.GetKeyDown(KeyCode.LeftControl) == true )
-			sc.showOptions();
+			upSwipe();
 		if(Input.GetKeyDown(KeyCode.RightControl) == true )
-			sc.hideOptions();
+			downSwipe();
 
 		// Test skip/enter tutorial. TODO: REMOVE THIS LATER
 		if(Input.GetKeyDown(KeyCode.LeftShift) == true )
 			leftSwipe();
 		if(Input.GetKeyDown(KeyCode.RightShift) == true )
-			sc.skipTutorial();
+			rightSwipe();
+
+		if(Input.GetKeyDown(KeyCode.Space) == true )
+			sc.successTutorial();
 	}
 }
