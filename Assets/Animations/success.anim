@@ -23,6 +23,16 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
+      - time: .416666657
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2.41666675
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.x
@@ -34,24 +44,24 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1080
-        inSlope: -1080
-        outSlope: -1080
+        inSlope: -2592
+        outSlope: -2592
         tangentMode: 10
-      - time: 1
+      - time: .416666657
         value: 0
         inSlope: 0
         outSlope: 0
-        tangentMode: 1
+        tangentMode: 0
+      - time: 2.41666675
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       - time: 3
-        value: 0
+        value: -1080
         inSlope: 0
         outSlope: 0
-        tangentMode: 1
-      - time: 3.9835
-        value: -1080
-        inSlope: -1080
-        outSlope: -1080
-        tangentMode: 1
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
@@ -70,7 +80,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 3.9835
+    m_StopTime: 3
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -93,6 +103,16 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
+      - time: .416666657
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 2.41666675
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.x
@@ -104,24 +124,24 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1080
-        inSlope: -1080
-        outSlope: -1080
+        inSlope: -2592
+        outSlope: -2592
         tangentMode: 10
-      - time: 1
+      - time: .416666657
         value: 0
         inSlope: 0
         outSlope: 0
-        tangentMode: 1
+        tangentMode: 0
+      - time: 2.41666675
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       - time: 3
-        value: 0
+        value: -1080
         inSlope: 0
         outSlope: 0
-        tangentMode: 1
-      - time: 3.9835
-        value: -1080
-        inSlope: -1080
-        outSlope: -1080
-        tangentMode: 1
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.y
