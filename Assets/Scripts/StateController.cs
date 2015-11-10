@@ -130,7 +130,10 @@ public class StateController {
 		if(getPlace() < TUT0_SCREEN || getPlace() > TUT3_SCREEN)
 			return;
 
+		this.setLastPlace(getPlace());
+		this.setPlace(getPlace()+1);
 		successPanel.GetComponent<Animation>().Play("success");
+		controlPanel.GetComponent<Animation>().Play(tutorialAnimations[getPlace() - 2]);
 	}
 
 	public void endedTutorial(){
@@ -152,9 +155,8 @@ public class StateController {
 		if(getLastPlace() < MAIN_SCREEN || getLastPlace() > LABORATORY)
 			return;
 
-		int old_place = getPlace();
 		int old_last = getLastPlace();
-		this.setLastPlace(old_place);
+		this.setLastPlace(getPlace());
 		this.setPlace(MAIN_SCREEN);
 
 		optionsPanel.GetComponent<Animation>().Play("hide_options");
