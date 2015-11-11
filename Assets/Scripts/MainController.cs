@@ -88,5 +88,16 @@ public class MainController : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.Space) == true )
 			sc.successTutorial();
+
+		// TODO: REMOVE THIS LATER, ONLY FOR PRESENTATION
+		if(sc.getPlace() == 6 && sc.canAnimate()){
+			this.transform.position = new Vector3(
+				-1700, transform.position.y, transform.position.z
+			);
+		} else if(sc.getPlace() == 0 && sc.canAnimate()){
+			this.transform.position = new Vector3(
+				-500, transform.position.y, transform.position.z
+			);
+		}
 	}
 }
