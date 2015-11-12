@@ -7,8 +7,8 @@ public class MainController : MonoBehaviour {
 	public GameObject optionsPanel;
 	public GameObject successPanel;
 
-	Controller ct;
-	StateController sc;
+	StateController sc; /* for menus */
+	Controller ct; /* to control leapmotion */
 	
 	// This can be later used if leapmotion is buggy
 	/*
@@ -27,6 +27,10 @@ public class MainController : MonoBehaviour {
 		sc = new StateController(controlPanel, optionsPanel, successPanel);
 
 		// horzFreq = vertFreq = 0;
+	}
+
+	public StateController getStateController(){
+		return this.sc;
 	}
 
 	void upSwipe(){

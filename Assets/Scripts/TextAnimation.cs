@@ -3,19 +3,16 @@ using System.Collections;
 
 public class TextAnimation : MonoBehaviour {
 
-	public GameObject controlPanel;
-	public GameObject optionsPanel;
-	public GameObject successPanel;
+	public GameObject camera; /* access MainController script */
 
 	public float speed; /* animation speed */
 	public float radius; /* bound of animation */
 	public int pos; /* object position left or right */
+	public int place; /* menu position */
 
 	float x, y; /* new x of animated text */
 	float curx, cury; /* initial x and y of text */
 	float acc; /* accelaration */
-
-	StateController sc;
 
 	// Use this for initialization
 	void Start () {
@@ -23,21 +20,29 @@ public class TextAnimation : MonoBehaviour {
 		y = cury = this.transform.position.y;
 
 		acc = 0; /* initial accelaration */
+	}
 
-		if(controlPanel != null && optionsPanel != null)
-			sc = new StateController(controlPanel, optionsPanel, successPanel);
+	/* TODO: This is a temporary fix, only working
+	   in main menu */
+	bool checkAnimation(){
+		/* If any animation is playing stop all text animations
+           and update both current x and y position */
+
+		StateController sc = camera.GetComponent<MainController>().getStateController();
+
+		if(sc.getPlace() != place || !sc.canAnimate()){
+			acc = 0; /* this fixs difference between position */
+			return true;
+		} else {
+			this.transform.position = new Vector3(curx, cury, transform.position.z);
+			return false;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		/* If any animation is playing stop all text animations
-           and update both current x and y position */
-		if(!sc.canAnimate()){
-			curx = this.transform.position.x;
-			cury = this.transform.position.y;
+		if(checkAnimation())
 			return;
-		}
 
 		float delta = Time.deltaTime * 100;
 		acc += Mathf.PI / (100 - speed);

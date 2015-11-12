@@ -270,6 +270,7 @@ GameObject:
   - 224: {fileID: 158097192}
   - 222: {fileID: 158097194}
   - 114: {fileID: 158097193}
+  - 114: {fileID: 158097195}
   m_Layer: 5
   m_Name: arrowLeftImg
   m_TagString: Untagged
@@ -326,6 +327,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 158097191}
+--- !u!114 &158097195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 158097191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a79e1e15a4657445aab8257a7bc036d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1092663839}
+  speed: 30
+  radius: 20
+  pos: 1
+  place: 0
 --- !u!1 &260509364
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +569,7 @@ GameObject:
   - 224: {fileID: 593487391}
   - 222: {fileID: 593487393}
   - 114: {fileID: 593487392}
+  - 114: {fileID: 593487394}
   m_Layer: 5
   m_Name: swipeRightText
   m_TagString: Untagged
@@ -614,6 +632,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 593487390}
+--- !u!114 &593487394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593487390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a79e1e15a4657445aab8257a7bc036d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1092663839}
+  speed: 30
+  radius: 20
+  pos: 1
+  place: 0
 --- !u!1 &655195376
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +816,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -395}
+  m_AnchoredPosition: {x: 0, y: -380}
   m_SizeDelta: {x: 1180, y: 197}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &688894397
@@ -1046,6 +1080,7 @@ GameObject:
   - 224: {fileID: 847678690}
   - 222: {fileID: 847678692}
   - 114: {fileID: 847678691}
+  - 114: {fileID: 847678693}
   m_Layer: 5
   m_Name: swipeLeftText
   m_TagString: Untagged
@@ -1108,6 +1143,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 847678689}
+--- !u!114 &847678693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 847678689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a79e1e15a4657445aab8257a7bc036d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1092663839}
+  speed: 30
+  radius: 20
+  pos: -1
+  place: 0
 --- !u!1 &1092663839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1270,7 @@ GameObject:
   - 224: {fileID: 1182584627}
   - 222: {fileID: 1182584629}
   - 114: {fileID: 1182584628}
+  - 114: {fileID: 1182584630}
   m_Layer: 5
   m_Name: optionsText
   m_TagString: Untagged
@@ -1281,6 +1333,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1182584626}
+--- !u!114 &1182584630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1182584626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a79e1e15a4657445aab8257a7bc036d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1092663839}
+  speed: 15
+  radius: 10
+  pos: 0
+  place: 0
 --- !u!1001 &1294553943
 Prefab:
   m_ObjectHideFlags: 0
@@ -1512,7 +1580,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -395}
+  m_AnchoredPosition: {x: 0, y: -380}
   m_SizeDelta: {x: 1180, y: 197}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1382469148
@@ -1584,7 +1652,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -395}
+  m_AnchoredPosition: {x: 0, y: -380}
   m_SizeDelta: {x: 1180, y: 197}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1394493199
@@ -1689,6 +1757,7 @@ GameObject:
   - 224: {fileID: 1468588427}
   - 222: {fileID: 1468588429}
   - 114: {fileID: 1468588428}
+  - 114: {fileID: 1468588430}
   m_Layer: 5
   m_Name: arrowRightImg
   m_TagString: Untagged
@@ -1745,6 +1814,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1468588426}
+--- !u!114 &1468588430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1468588426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a79e1e15a4657445aab8257a7bc036d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1092663839}
+  speed: 30
+  radius: 20
+  pos: -1
+  place: 0
 --- !u!1 &1473453327
 GameObject:
   m_ObjectHideFlags: 0
