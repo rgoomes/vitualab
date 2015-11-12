@@ -23,11 +23,6 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.x
@@ -39,13 +34,13 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: -1080
-        inSlope: 1080
-        outSlope: 1080
+        inSlope: 2160
+        outSlope: 2160
         tangentMode: 10
-      - time: 1
+      - time: .5
         value: 0
-        inSlope: 1080
-        outSlope: 1080
+        inSlope: 2160
+        outSlope: 2160
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -65,7 +60,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: .5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -88,11 +83,6 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_AnchoredPosition.x
@@ -104,13 +94,13 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: -1080
-        inSlope: 1080
-        outSlope: 1080
+        inSlope: 2160
+        outSlope: 2160
         tangentMode: 10
-      - time: 1
+      - time: .5
         value: 0
-        inSlope: 1080
-        outSlope: 1080
+        inSlope: 2160
+        outSlope: 2160
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
