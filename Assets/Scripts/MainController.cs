@@ -9,9 +9,9 @@ public class MainController : MonoBehaviour {
 
 	StateController sc; /* for menus */
 	Controller ct; /* to control leapmotion */
-	
-	// This can be later used if leapmotion is buggy
-	/*
+
+    // This can be later used if leapmotion is buggy
+    /*
 	const int MIN_FREQ = 5;
 	int horzFreq;
 	int vertFreq;
@@ -20,8 +20,8 @@ public class MainController : MonoBehaviour {
 	void Start(){
 		ct = new Controller();
 		ct.EnableGesture(Gesture.GestureType.TYPESWIPE);
-		ct.Config.SetFloat("Gesture.Swipe.MinLength", 200.0f);
-		ct.Config.SetFloat("Gesture.Swipe.MinVelocity", 100.0f);
+		//ct.Config.SetFloat("Gesture.Swipe.MinLength", 200.0f);
+		//ct.Config.SetFloat("Gesture.Swipe.MinVelocity", 100.0f);
 		ct.Config.Save();
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel);
@@ -60,17 +60,21 @@ public class MainController : MonoBehaviour {
 			
 			if(g.Type == Gesture.GestureType.TYPESWIPE){
 				SwipeGesture Swipe = new SwipeGesture(g);
-				Vector swipeDirection = Swipe.Direction;
-				
-				if(swipeDirection.x < 0)
-					leftSwipe();
-				else if(swipeDirection.x > 0)
-					rightSwipe();
-				else if(swipeDirection.y < 0)
-					downSwipe();
-				else if(swipeDirection.y > 0)
-					upSwipe();
-			}
+
+                bool isHorizontal = Mathf.Abs(Swipe.Direction.x) > Mathf.Abs(Swipe.Direction.y);
+                if (isHorizontal){
+                    if (Swipe.Direction.x > 0)
+                        rightSwipe();
+                    else
+                        leftSwipe();
+                }
+                else{
+                    if (Swipe.Direction.y > 0)
+                        upSwipe();
+                    else
+                        downSwipe();
+                }
+            }
 		}
 	}
 	
