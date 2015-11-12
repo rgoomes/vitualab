@@ -15,18 +15,27 @@ public class StateController {
 
 	int place, last_place;
 	
+	const int RIGHT = -1; /* right direction */
+	const int LEFT	=  1; /* left direction */
+
 	GameObject controlPanel;
 	GameObject optionsPanel;
 	GameObject successPanel;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
-	
+
+	List<GameObject> labObjects;
+	int cur_obj;
+
 	public StateController(GameObject cp, GameObject op, GameObject sp){
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
 		this.optionsPanel = op;
 		this.successPanel = sp;
+
+		labObjects = new List<GameObject>();
+		cur_obj = 0;
 
 		animations = new List<Animation>();
 		this.animations.Add(op.GetComponent<Animation>());
@@ -42,6 +51,11 @@ public class StateController {
 			"main_from_zoom", "main_from_rotate",   "main_from_switch",
 			"main_from_pick", "main_from_circular", "main_from_lab"
 		});
+	}
+
+	public void addLabObject(GameObject go){
+		this.labObjects.Add(go);
+		this.animations.Add(go.GetComponent<Animation>());
 	}
 	
 	public int getLastPlace(){
@@ -165,5 +179,27 @@ public class StateController {
 			return;
 
 		controlPanel.GetComponent<Animation>().Play(toMainAnimations[old_last]);
+	}
+
+	public void changeObject(int dir /* direction of swipe */ ){
+		if(!this.canAnimate())
+			return;
+		if(getPlace() != LABORATORY)
+			return;
+
+		/* control directions and bounds */
+		if(dir != LEFT && dir != RIGHT)
+			return;
+		if(dir == RIGHT && cur_obj == 0)
+			return;
+		if(dir == LEFT && cur_obj == labObjects.Count-1)
+			return;
+
+		int showPos = cur_obj + dir;
+		int remoPos = cur_obj;
+		cur_obj 	= showPos;
+
+		labObjects[showPos].GetComponent<Animation>().Play("show_object"   + (dir == LEFT ? "_left" : "_right"));
+		labObjects[remoPos].GetComponent<Animation>().Play("remove_object" + (dir == LEFT ? "_left" : "_right"));
 	}
 }

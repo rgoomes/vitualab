@@ -7,12 +7,19 @@ public class MainController : MonoBehaviour {
 	public GameObject optionsPanel;
 	public GameObject successPanel;
 
+	// Declare here all objects
+	public GameObject balanca;
+	public GameObject discodelezenne;
+
 	StateController sc; /* for menus */
 	Controller ct; /* to control leapmotion */
 
 	const int LFPS = 30; /* leapmotion frame every x game frames */
 	Frame lastFrame; /* the frame to detect motion */
 	int frameCounter; /* counter from 0 to fps */
+
+	const int RIGHT = -1; /* right direction */
+	const int LEFT	=  1; /* left direction */
 	
 	void Start(){
 		ct = new Controller();
@@ -21,6 +28,8 @@ public class MainController : MonoBehaviour {
 		ct.Config.Save();
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel);
+		sc.addLabObject(balanca);
+		sc.addLabObject(discodelezenne);
 
 		lastFrame = null;
 		frameCounter = 0;
@@ -41,11 +50,13 @@ public class MainController : MonoBehaviour {
 	void leftSwipe(){
 		sc.enterTutorial();
 		sc.nextTutorial();
+		sc.changeObject(LEFT);
 	}
 
 	void rightSwipe(){
 		sc.skipTutorial();
 		sc.backToMainMenu();
+		sc.changeObject(RIGHT);
 	}
 
 	void listenGestures(){
@@ -99,13 +110,13 @@ public class MainController : MonoBehaviour {
 	}
 
 	void kbInputTest(){
-		if(Input.GetKeyDown(KeyCode.LeftControl) == true )
+		if(Input.GetKeyDown(KeyCode.UpArrow) == true )
 			upSwipe();
-		if(Input.GetKeyDown(KeyCode.RightControl) == true )
+		if(Input.GetKeyDown(KeyCode.DownArrow) == true )
 			downSwipe();
-		if(Input.GetKeyDown(KeyCode.LeftShift) == true )
+		if(Input.GetKeyDown(KeyCode.LeftArrow) == true )
 			leftSwipe();
-		if(Input.GetKeyDown(KeyCode.RightShift) == true )
+		if(Input.GetKeyDown(KeyCode.RightArrow) == true )
 			rightSwipe();
 		if(Input.GetKeyDown(KeyCode.Space) == true )
 			sc.successTutorial();
