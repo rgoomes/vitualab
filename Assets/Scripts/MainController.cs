@@ -145,5 +145,10 @@ public class MainController : MonoBehaviour {
 
 		// Debug only
 		kbInputTest();
+
+		if(sc.canSetObject()){
+			sc.showObject();
+			sc.setSetObject(false);
+		}
 	}
 }

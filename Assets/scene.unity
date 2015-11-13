@@ -1749,7 +1749,7 @@ Prefab:
     - target: {fileID: 9500000, guid: ad4273482b29564478c25d9066cbc090, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: b7109342decf0474faa143addd5f238a, type: 2}
+      objectReference: {fileID: 9100000, guid: 198b0ec85ca66204d809e20e0d7e012b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad4273482b29564478c25d9066cbc090, type: 3}
   m_IsPrefabParent: 0
@@ -2599,6 +2599,8 @@ Animation:
   - {fileID: 7400000, guid: ef5c4b64c27c247408a0142977aa4a6b, type: 2}
   - {fileID: 7400000, guid: c2df578d0a5d411418e8bf40f177c0cf, type: 2}
   - {fileID: 7400000, guid: e46841a7a5064cb45909a93985704586, type: 2}
+  - {fileID: 7400000, guid: 932bb309132df5347ac0081b1e374848, type: 2}
+  - {fileID: 7400000, guid: f22429af23875a9409c4a37b4f941b5e, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -2866,6 +2868,8 @@ Animation:
   - {fileID: 7400000, guid: ef5c4b64c27c247408a0142977aa4a6b, type: 2}
   - {fileID: 7400000, guid: c2df578d0a5d411418e8bf40f177c0cf, type: 2}
   - {fileID: 7400000, guid: e46841a7a5064cb45909a93985704586, type: 2}
+  - {fileID: 7400000, guid: 932bb309132df5347ac0081b1e374848, type: 2}
+  - {fileID: 7400000, guid: f22429af23875a9409c4a37b4f941b5e, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

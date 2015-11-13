@@ -28,12 +28,15 @@ public class StateController {
 	List<GameObject> labObjects;
 	int cur_obj;
 
+	bool setObject;
+
 	public StateController(GameObject cp, GameObject op, GameObject sp){
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
 		this.optionsPanel = op;
 		this.successPanel = sp;
 
+		setObject = false;
 		labObjects = new List<GameObject>();
 		cur_obj = 0;
 
@@ -111,6 +114,8 @@ public class StateController {
 		if(getPlace() != MAIN_SCREEN)
 			return;
 
+		setObject = true;
+
 		this.setPlace(LABORATORY);
 		this.setLastPlace(MAIN_SCREEN);
 		controlPanel.GetComponent<Animation>().Play("skip_tutorial");
@@ -187,19 +192,32 @@ public class StateController {
 		if(getPlace() != LABORATORY)
 			return;
 
-		/* control directions and bounds */
+		/* invalid direction */
 		if(dir != LEFT && dir != RIGHT)
 			return;
-		if(dir == RIGHT && cur_obj == 0)
-			return;
-		if(dir == LEFT && cur_obj == labObjects.Count-1)
-			return;
 
-		int showPos = cur_obj + dir;
-		int remoPos = cur_obj;
-		cur_obj 	= showPos;
+		/* on bound: no object on left or right */
+		if(dir == RIGHT && cur_obj == 0 || dir == LEFT && cur_obj == labObjects.Count - 1)
+			labObjects[cur_obj].GetComponent<Animation>().Play("bound_reached" + (dir == LEFT ? "_left" : "_right"));
+		else {
+			int showPos = cur_obj + dir;
+			int remoPos = cur_obj;
+			cur_obj 	= showPos;
 
-		labObjects[showPos].GetComponent<Animation>().Play("show_object"   + (dir == LEFT ? "_left" : "_right"));
-		labObjects[remoPos].GetComponent<Animation>().Play("remove_object" + (dir == LEFT ? "_left" : "_right"));
+			labObjects[showPos].GetComponent<Animation>().Play("show_object"   + (dir == LEFT ? "_left" : "_right"));
+			labObjects[remoPos].GetComponent<Animation>().Play("remove_object" + (dir == LEFT ? "_left" : "_right"));
+		}
+	}
+
+	public bool canSetObject(){
+		return setObject && canAnimate();
+	}
+
+	public void setSetObject(bool value){
+		setObject = value;
+	}
+
+	public void showObject(){
+		labObjects[cur_obj].transform.position = new Vector3(-1000, 0, labObjects[cur_obj].transform.position.z);
 	}
 }
