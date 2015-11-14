@@ -49,11 +49,12 @@ public class MainController : MonoBehaviour {
 
 	void leftSwipe(){
 		sc.enterTutorial();
-		sc.nextTutorial();
+		sc.nextTutorial(); // REMOVE LATER
 		sc.changeObject(LEFT);
 	}
 
 	void rightSwipe(){
+		sc.checkSwipeTutorial();
 		sc.skipTutorial();
 		sc.backToMainMenu();
 		sc.changeObject(RIGHT);
@@ -146,9 +147,7 @@ public class MainController : MonoBehaviour {
 		// Debug only
 		kbInputTest();
 
-		if(sc.canSetObject()){
-			sc.showObject();
-			sc.setSetObject(false);
-		}
+		// Update state controller
+		sc.update();
 	}
 }

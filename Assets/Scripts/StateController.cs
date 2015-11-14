@@ -114,7 +114,7 @@ public class StateController {
 		if(getPlace() != MAIN_SCREEN)
 			return;
 
-		setObject = true;
+		setSetObject(true);
 
 		this.setPlace(LABORATORY);
 		this.setLastPlace(MAIN_SCREEN);
@@ -174,6 +174,9 @@ public class StateController {
 		if(getLastPlace() < MAIN_SCREEN || getLastPlace() > LABORATORY)
 			return;
 
+		if(getLastPlace() == LABORATORY)
+			hideLabObject();
+
 		int old_last = getLastPlace();
 		this.setLastPlace(getPlace());
 		this.setPlace(MAIN_SCREEN);
@@ -209,6 +212,13 @@ public class StateController {
 		}
 	}
 
+	public void checkSwipeTutorial(){
+		if(getPlace() != TUT2_SCREEN)
+			return;
+
+		this.successTutorial();
+	}
+
 	public bool canSetObject(){
 		return setObject && canAnimate();
 	}
@@ -217,7 +227,18 @@ public class StateController {
 		setObject = value;
 	}
 
-	public void showObject(){
+	public void showLabObject(){
 		labObjects[cur_obj].transform.position = new Vector3(-1000, 0, labObjects[cur_obj].transform.position.z);
+	}
+
+	public void hideLabObject(){
+		labObjects[cur_obj].transform.position = new Vector3(-1000, 1000, labObjects[cur_obj].transform.position.z);
+	}
+
+	public void update(){
+		if(canSetObject()){
+			showLabObject();
+			setSetObject(false);
+		}
 	}
 }
