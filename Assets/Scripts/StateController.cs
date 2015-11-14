@@ -235,6 +235,15 @@ public class StateController {
 		labObjects[cur_obj].transform.position = new Vector3(-1000, 1000, labObjects[cur_obj].transform.position.z);
 	}
 
+	public void rotateObject(float radius){
+		if(!canAnimate())
+			return;
+		if(getPlace() != LABORATORY)
+			return;
+
+		labObjects[cur_obj].transform.Rotate(Vector3.up, radius*Time.deltaTime*100);
+	}
+
 	public void update(){
 		if(canSetObject()){
 			showLabObject();

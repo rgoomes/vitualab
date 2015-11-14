@@ -84,7 +84,10 @@ public class MainController : MonoBehaviour {
 						downSwipe();
 				}
 			} else if(g.Type == Gesture.GestureType.TYPECIRCLE){
-				// TODO: Rotate object with circular finger movement
+				// TODO: Test rotate object with circular finger movement
+
+				CircleGesture Circle = new CircleGesture(g);
+				sc.rotateObject(Circle.Radius);
 			}
 		}
 	}
@@ -105,7 +108,7 @@ public class MainController : MonoBehaviour {
 
 		const float minScaleFactor = 0.25f;
 		if(Mathf.Abs(scaleFactor) > minScaleFactor){
-			// TODO: Apply rotation to selected object;
+			// TODO: Apply scale/zoom to selected object;
 		}
 
 	}
@@ -121,6 +124,8 @@ public class MainController : MonoBehaviour {
 			rightSwipe();
 		if(Input.GetKeyDown(KeyCode.Space) == true )
 			sc.successTutorial();
+		if(Input.GetKey(KeyCode.R) == true )
+			sc.rotateObject(2.0f);
 	}
 
 	bool isTick(){
