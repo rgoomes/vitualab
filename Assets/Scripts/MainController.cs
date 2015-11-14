@@ -87,7 +87,9 @@ public class MainController : MonoBehaviour {
 				// TODO: Test rotate object with circular finger movement
 
 				CircleGesture Circle = new CircleGesture(g);
-				sc.rotateObject(Circle.Radius);
+
+				int clockwise = Circle.Pointable.Direction.AngleTo(Circle.Normal) <= Mathf.PI / 2 ? -1 : 1;
+				sc.rotateAnimation(Circle.Radius, clockwise);
 			}
 		}
 	}
@@ -108,7 +110,8 @@ public class MainController : MonoBehaviour {
 
 		const float minScaleFactor = 0.25f;
 		if(Mathf.Abs(scaleFactor) > minScaleFactor){
-			// TODO: Apply scale/zoom to selected object;
+			// TODO: Test scale/zoom with leapmotion;
+			sc.scaleAnimation(scaleFactor);
 		}
 
 	}
@@ -122,10 +125,15 @@ public class MainController : MonoBehaviour {
 			leftSwipe();
 		if(Input.GetKeyDown(KeyCode.RightArrow) == true )
 			rightSwipe();
-		if(Input.GetKeyDown(KeyCode.Space) == true )
+
+		if(Input.GetKey(KeyCode.Space) == true )
 			sc.successTutorial();
 		if(Input.GetKey(KeyCode.R) == true )
-			sc.rotateObject(2.0f);
+			sc.rotateAnimation(2.0f, 1);
+		if(Input.GetKey(KeyCode.A) == true )
+			sc.scaleAnimation(1.0f);
+		if(Input.GetKey(KeyCode.D) == true )
+			sc.scaleAnimation(-1.0f);
 	}
 
 	bool isTick(){

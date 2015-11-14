@@ -25,10 +25,7 @@ public class StateController {
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
 
-	List<GameObject> labObjects;
-	int cur_obj;
-
-	bool setObject;
+	ObjectsController oc;
 
 	public StateController(GameObject cp, GameObject op, GameObject sp){
 		this.place = last_place = MAIN_SCREEN;
@@ -36,9 +33,7 @@ public class StateController {
 		this.optionsPanel = op;
 		this.successPanel = sp;
 
-		setObject = false;
-		labObjects = new List<GameObject>();
-		cur_obj = 0;
+		oc = new ObjectsController();
 
 		animations = new List<Animation>();
 		this.animations.Add(op.GetComponent<Animation>());
@@ -56,9 +51,13 @@ public class StateController {
 		});
 	}
 
+	public ObjectsController getObjectController(){
+		return this.oc;
+	}
+
 	public void addLabObject(GameObject go){
-		this.labObjects.Add(go);
-		this.animations.Add(go.GetComponent<Animation>());
+		oc.addObject(go);
+		animations.Add(go.GetComponent<Animation>());
 	}
 	
 	public int getLastPlace(){
@@ -114,7 +113,7 @@ public class StateController {
 		if(getPlace() != MAIN_SCREEN)
 			return;
 
-		setSetObject(true);
+		oc.setSetObject(true);
 
 		this.setPlace(LABORATORY);
 		this.setLastPlace(MAIN_SCREEN);
@@ -175,7 +174,7 @@ public class StateController {
 			return;
 
 		if(getLastPlace() == LABORATORY)
-			hideLabObject();
+			oc.hideLabObject();
 
 		int old_last = getLastPlace();
 		this.setLastPlace(getPlace());
@@ -200,15 +199,15 @@ public class StateController {
 			return;
 
 		/* on bound: no object on left or right */
-		if(dir == RIGHT && cur_obj == 0 || dir == LEFT && cur_obj == labObjects.Count - 1)
-			labObjects[cur_obj].GetComponent<Animation>().Play("bound_reached" + (dir == LEFT ? "_left" : "_right"));
+		if(dir == RIGHT && oc.getCurObjPos() == 0 || dir == LEFT && oc.getCurObjPos() == oc.objectsNumber() - 1)
+			oc.getCurObject().GetComponent<Animation>().Play("bound_reached" + (dir == LEFT ? "_left" : "_right"));
 		else {
-			int showPos = cur_obj + dir;
-			int remoPos = cur_obj;
-			cur_obj 	= showPos;
+			int showPos = oc.getCurObjPos() + dir;
+			int remoPos = oc.getCurObjPos();
+			oc.setCurObjPos(showPos);
 
-			labObjects[showPos].GetComponent<Animation>().Play("show_object"   + (dir == LEFT ? "_left" : "_right"));
-			labObjects[remoPos].GetComponent<Animation>().Play("remove_object" + (dir == LEFT ? "_left" : "_right"));
+			oc.getObject(showPos).GetComponent<Animation>().Play("show_object"   + (dir == LEFT ? "_left" : "_right"));
+			oc.getObject(remoPos).GetComponent<Animation>().Play("remove_object" + (dir == LEFT ? "_left" : "_right"));
 		}
 	}
 
@@ -219,35 +218,32 @@ public class StateController {
 		this.successTutorial();
 	}
 
-	public bool canSetObject(){
-		return setObject && canAnimate();
-	}
-
-	public void setSetObject(bool value){
-		setObject = value;
-	}
-
-	public void showLabObject(){
-		labObjects[cur_obj].transform.position = new Vector3(-1000, 0, labObjects[cur_obj].transform.position.z);
-	}
-
-	public void hideLabObject(){
-		labObjects[cur_obj].transform.position = new Vector3(-1000, 1000, labObjects[cur_obj].transform.position.z);
-	}
-
-	public void rotateObject(float radius){
+	public void rotateAnimation(float radius, int clockwise){
 		if(!canAnimate())
 			return;
 		if(getPlace() != LABORATORY)
 			return;
 
-		labObjects[cur_obj].transform.Rotate(Vector3.up, radius*Time.deltaTime*100);
+		oc.rotateObject(radius, clockwise);
+	}
+
+	public void scaleAnimation(float scaleFactor){
+		if(!canAnimate())
+			return;
+		if(getPlace() != LABORATORY)
+			return;
+
+		oc.scaleObject(scaleFactor);
+	}
+
+	public bool canSetObject(){
+		return oc.getSetObject() && canAnimate();
 	}
 
 	public void update(){
-		if(canSetObject()){
-			showLabObject();
-			setSetObject(false);
+		if(this.canSetObject()){
+			oc.showLabObject();
+			oc.setSetObject(false);
 		}
 	}
 }
