@@ -246,4 +246,12 @@ public class StateController {
 			oc.setSetObject(false);
 		}
 	}
+
+	public void terminate(){
+		Debug.Log("Kappa");
+		if (this.canAnimate () && getPlace () == OPTIONS_SCREEN) {
+			Debug.Log("Pride");
+			Application.Quit ();
+		}
+	}
 }
