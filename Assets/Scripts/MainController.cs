@@ -6,6 +6,7 @@ public class MainController : MonoBehaviour {
 	public GameObject controlPanel;
 	public GameObject optionsPanel;
 	public GameObject successPanel;
+	public GameObject congratzPanel;
 
 	// Declare here all objects
 	public GameObject balanca;
@@ -27,7 +28,7 @@ public class MainController : MonoBehaviour {
 		ct.EnableGesture(Gesture.GestureType.TYPECIRCLE);
 		ct.Config.Save();
 
-		sc = new StateController(controlPanel, optionsPanel, successPanel);
+		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel);
 		sc.addLabObject(balanca);
 		sc.addLabObject(discodelezenne);
 
@@ -127,8 +128,11 @@ public class MainController : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.RightArrow) == true )
 			rightSwipe();
 
-		if(Input.GetKey(KeyCode.Space) == true )
+		if(Input.GetKey(KeyCode.Space) == true ){
 			sc.successTutorial();
+			sc.endedTutorial();
+		}
+
 		if(Input.GetKey(KeyCode.R) == true )
 			sc.rotateAnimation(2.0f, 1);
 		if(Input.GetKey(KeyCode.A) == true )

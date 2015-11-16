@@ -21,17 +21,19 @@ public class StateController {
 	GameObject controlPanel;
 	GameObject optionsPanel;
 	GameObject successPanel;
+	GameObject congratzPanel;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
 
 	ObjectsController oc;
 
-	public StateController(GameObject cp, GameObject op, GameObject sp){
+	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp){
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
 		this.optionsPanel = op;
 		this.successPanel = sp;
+		this.congratzPanel = gp;
 
 		oc = new ObjectsController();
 
@@ -39,6 +41,7 @@ public class StateController {
 		this.animations.Add(op.GetComponent<Animation>());
 		this.animations.Add(cp.GetComponent<Animation>());
 		this.animations.Add(sp.GetComponent<Animation>());
+		this.animations.Add(gp.GetComponent<Animation>());
 
 		tutorialAnimations = new List<string>(new string[] {
 			"goto_rotate", "goto_switch", "goto_pick", "goto_circular"
@@ -159,9 +162,13 @@ public class StateController {
 		if(getPlace() != TUT4_SCREEN)
 			return;
 
+		oc.setSetObject(true);
+
 		this.setLastPlace(TUT4_SCREEN);
 		this.setPlace(LABORATORY);
-		// ANIMATION: CONGRATULATIONS YOU'VE MASTERED THE LEAPMOTION..
+
+		congratzPanel.GetComponent<Animation>().Play("success");
+		controlPanel.GetComponent<Animation>().Play("goto_lab");
 	}
 
 	public void backToMainMenu(){
@@ -239,18 +246,15 @@ public class StateController {
 		return oc.getSetObject() && canAnimate();
 	}
 
+	public void terminate(){
+		if(this.canAnimate() && getPlace() == OPTIONS_SCREEN)
+			Application.Quit();
+	}
+
 	public void update(){
 		if(this.canSetObject()){
 			oc.showLabObject();
 			oc.setSetObject(false);
-		}
-	}
-
-	public void terminate(){
-		Debug.Log("Kappa");
-		if (this.canAnimate () && getPlace () == OPTIONS_SCREEN) {
-			Debug.Log("Pride");
-			Application.Quit ();
 		}
 	}
 }
