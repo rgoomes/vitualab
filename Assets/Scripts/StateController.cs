@@ -73,7 +73,6 @@ public class StateController {
 	}
 	
 	public void setPlace(int new_place){
-		this.last_place = this.place;
 		this.place = new_place;
 	}
 	
