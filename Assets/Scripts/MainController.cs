@@ -48,6 +48,7 @@ public class MainController : MonoBehaviour {
 	}
 
 	void leftSwipe(){
+		sc.terminate();
 		sc.enterTutorial();
 		sc.nextTutorial(); // REMOVE LATER
 		sc.changeObject(LEFT);
