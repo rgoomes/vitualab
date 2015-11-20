@@ -28,12 +28,16 @@ public class StateController {
 
 	ObjectsController oc;
 
+	int volume;
+
 	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp){
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
 		this.optionsPanel = op;
 		this.successPanel = sp;
 		this.congratzPanel = gp;
+
+		volume = 100;
 
 		oc = new ObjectsController();
 
@@ -244,6 +248,23 @@ public class StateController {
 
 	public bool canSetObject(){
 		return oc.getSetObject() && canAnimate();
+	}
+
+	public int getVolume(){
+		return this.volume;
+	}
+
+	public void changeVolume(int power){
+		if(!canAnimate())
+			return;
+		if(getPlace() != OPTIONS_SCREEN)
+			return;
+
+		volume += power;
+		volume  = Mathf.Max(0,   volume);
+		volume  = Mathf.Min(100, volume);
+
+		AudioListener.volume = volume / 100.0f;
 	}
 
 	public void terminate(){

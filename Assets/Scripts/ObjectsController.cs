@@ -58,9 +58,9 @@ public class ObjectsController {
 		getCurObject().transform.position = new Vector3(-1000, 1000, getCurObject().transform.position.z);
 	}
 
-	public void rotateObject(float radius, int clockwise){
-		float delta = Time.deltaTime*100;
-		getCurObject().transform.Rotate(clockwise*Vector3.up, radius*delta);
+	public void rotateObject(float angle, int clockwise){
+		float delta = Time.deltaTime * 10;
+		getCurObject().transform.Rotate(clockwise*Vector3.up, angle*delta);
 	}
 
 	public float getCurObjScaleFactor(){
@@ -68,13 +68,17 @@ public class ObjectsController {
 	}
 
 	public void scaleObject(float scaleFactor){
-		float delta = Time.deltaTime*100;
+		float delta = Time.deltaTime * 10;
 
-		if(getCurObjScaleFactor()+scaleFactor*delta < MIN_SCALE_FACTOR)
+		int isZoomIn   = (scaleFactor < 1) ? -1 : 1;
+		float scaleVal = scaleFactor * delta;
+
+		/* reached lower and upper bounds */
+		if(getCurObjScaleFactor() + isZoomIn*scaleVal < MIN_SCALE_FACTOR)
 			return;
-		if(getCurObjScaleFactor()+scaleFactor*delta > MAX_SCALE_FACTOR)
+		if(getCurObjScaleFactor() + isZoomIn*scaleVal > MAX_SCALE_FACTOR)
 			return;
 
-		getCurObject().transform.localScale += new Vector3(scaleFactor*delta, scaleFactor*delta, scaleFactor*delta);
+		getCurObject().transform.localScale += isZoomIn * new Vector3(scaleVal, scaleVal, scaleVal);
 	}
 }
