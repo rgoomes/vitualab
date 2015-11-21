@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,6 +23,7 @@ public class StateController {
 	GameObject optionsPanel;
 	GameObject successPanel;
 	GameObject congratzPanel;
+	GameObject soundIcon;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
@@ -30,12 +32,13 @@ public class StateController {
 
 	int volume;
 
-	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp){
+	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp, GameObject si){
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
 		this.optionsPanel = op;
 		this.successPanel = sp;
 		this.congratzPanel = gp;
+		this.soundIcon = si;
 
 		volume = 100;
 
@@ -265,6 +268,19 @@ public class StateController {
 		volume  = Mathf.Min(100, volume);
 
 		AudioListener.volume = volume / 100.0f;
+
+		string val;
+		if(volume == 0)
+			val = "none";
+		else if(volume < 45)
+			val = "low";
+		else if(volume < 90)
+			val = "medium";
+		else
+			val = "high";
+
+		string path = "Sprites/SoundIcon/128/" + val;
+		soundIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>(path);
 	}
 
 	public void terminate(){

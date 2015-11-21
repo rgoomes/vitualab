@@ -7,6 +7,7 @@ public class MainController : MonoBehaviour {
 	public GameObject optionsPanel;
 	public GameObject successPanel;
 	public GameObject congratzPanel;
+	public GameObject soundIcon;
 
 	// Declare here all objects
 	public GameObject balanca;
@@ -14,9 +15,6 @@ public class MainController : MonoBehaviour {
 
 	StateController sc; /* for menus */
 	Controller ct; /* to control leapmotion */
-
-	const int RIGHT = -1; /* right direction */
-	const int LEFT	=  1; /* left direction */
 
 	Frame curFrame = null;
 	
@@ -27,7 +25,7 @@ public class MainController : MonoBehaviour {
 		ct.EnableGesture(Gesture.GestureType.TYPESCREENTAP);
 		ct.Config.Save();
 
-		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel);
+		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon);
 		sc.addLabObject(balanca);
 		sc.addLabObject(discodelezenne);
 	}
@@ -48,14 +46,14 @@ public class MainController : MonoBehaviour {
 		sc.terminate();
 		sc.enterTutorial();
 		sc.nextTutorial(); // REMOVE LATER
-		sc.changeObject(LEFT);
+		sc.changeObject(1 /* left direction */);
 	}
 
 	void rightSwipe(){
 		sc.checkSwipeTutorial();
 		sc.skipTutorial();
 		sc.backToMainMenu();
-		sc.changeObject(RIGHT);
+		sc.changeObject(-1 /* right direction */);
 	}
 
 	void listenGestures(){
