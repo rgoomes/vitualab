@@ -24,6 +24,8 @@ public class StateController {
 	GameObject successPanel;
 	GameObject congratzPanel;
 	GameObject soundIcon;
+	GameObject successSound;
+	GameObject descriptionText;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
@@ -32,13 +34,17 @@ public class StateController {
 
 	int volume;
 
-	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp, GameObject si){
+	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp, GameObject si,
+	                       GameObject ss, GameObject dt){
+
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
 		this.optionsPanel = op;
 		this.successPanel = sp;
 		this.congratzPanel = gp;
 		this.soundIcon = si;
+		this.successSound = ss;
+		this.descriptionText = dt;
 
 		volume = 100;
 
@@ -65,8 +71,8 @@ public class StateController {
 		return this.oc;
 	}
 
-	public void addLabObject(GameObject go){
-		oc.addObject(go);
+	public void addLabObject(GameObject go, string description){
+		oc.addObject(go, description);
 		animations.Add(go.GetComponent<Animation>());
 	}
 	
@@ -151,6 +157,12 @@ public class StateController {
 		controlPanel.GetComponent<Animation>().Play(tutorialAnimations[getPlace() - 2]);
 	}
 
+	public void playSuccessSound(){
+		AudioSource audio = successSound.GetComponent<AudioSource>();
+		audio.volume = getVolume() / 100.0f;
+		audio.Play();
+	}
+
 	public void successTutorial(){
 		if(!this.canAnimate())
 			return;
@@ -161,6 +173,8 @@ public class StateController {
 		this.setPlace(getPlace()+1);
 		successPanel.GetComponent<Animation>().Play("success");
 		controlPanel.GetComponent<Animation>().Play(tutorialAnimations[getPlace() - 2]);
+
+		playSuccessSound();
 	}
 
 	public void endedTutorial(){
@@ -176,6 +190,8 @@ public class StateController {
 
 		congratzPanel.GetComponent<Animation>().Play("success");
 		controlPanel.GetComponent<Animation>().Play("goto_lab");
+
+		playSuccessSound();
 	}
 
 	public void backToMainMenu(){
@@ -201,6 +217,11 @@ public class StateController {
 		controlPanel.GetComponent<Animation>().Play(toMainAnimations[old_last]);
 	}
 
+	public void changeDescription(){
+		Text desc = descriptionText.GetComponent<Text>();
+		desc.text = oc.getCurObjDescription();
+	}
+
 	public void changeObject(int dir /* direction of swipe */ ){
 		if(!this.canAnimate())
 			return;
@@ -222,6 +243,8 @@ public class StateController {
 			oc.getObject(showPos).GetComponent<Animation>().Play("show_object"   + (dir == LEFT ? "_left" : "_right"));
 			oc.getObject(remoPos).GetComponent<Animation>().Play("remove_object" + (dir == LEFT ? "_left" : "_right"));
 		}
+
+		changeDescription();
 	}
 
 	public void checkSwipeTutorial(){
@@ -291,6 +314,7 @@ public class StateController {
 	public void update(){
 		if(this.canSetObject()){
 			oc.showLabObject();
+			changeDescription();
 			oc.setSetObject(false);
 		}
 	}

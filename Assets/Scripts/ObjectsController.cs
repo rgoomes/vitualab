@@ -8,6 +8,7 @@ public class ObjectsController {
 	const float MAX_SCALE_FACTOR = 150.0f;
 
 	List<GameObject> labObjects;
+	List<string> objectsDecription;
 	int cur_obj;
 	
 	bool setObject;
@@ -15,6 +16,7 @@ public class ObjectsController {
 	public ObjectsController(){
 		setObject = false;
 		labObjects = new List<GameObject>();
+		objectsDecription = new List<string>();
 		cur_obj = 0;
 	}
 
@@ -30,12 +32,17 @@ public class ObjectsController {
 		cur_obj = new_pos;
 	}
 
-	public void addObject(GameObject go){
+	public void addObject(GameObject go, string description){
 		this.labObjects.Add(go);
+		this.objectsDecription.Add(description);
 	}
 
 	public GameObject getCurObject(){
 		return this.labObjects[cur_obj];
+	}
+
+	public string getCurObjDescription(){
+		return objectsDecription[getCurObjPos()];
 	}
 
 	public GameObject getObject(int pos){

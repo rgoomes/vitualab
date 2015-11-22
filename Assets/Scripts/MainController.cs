@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Leap;
 
 public class MainController : MonoBehaviour {
@@ -8,6 +9,8 @@ public class MainController : MonoBehaviour {
 	public GameObject successPanel;
 	public GameObject congratzPanel;
 	public GameObject soundIcon;
+	public GameObject successSound;
+	public GameObject descriptionText;
 
 	// Declare here all objects
 	public GameObject balanca;
@@ -17,6 +20,8 @@ public class MainController : MonoBehaviour {
 	Controller ct; /* to control leapmotion */
 
 	Frame curFrame = null;
+
+	List<string> descriptions;
 	
 	void Start(){
 		ct = new Controller();
@@ -25,9 +30,16 @@ public class MainController : MonoBehaviour {
 		ct.EnableGesture(Gesture.GestureType.TYPESCREENTAP);
 		ct.Config.Save();
 
-		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon);
-		sc.addLabObject(balanca);
-		sc.addLabObject(discodelezenne);
+		descriptions = new List<string>(new string[] {
+			"A balanca etc. asdas dasd asd asdas asd as dasd 1231 23ads asd asd as as d",
+			"O disco de delezenne asd123asdasd asdasd123as dasdas 123 123 asdas asd asd asd"
+		});
+
+		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon,
+		                         successSound, descriptionText);
+
+		sc.addLabObject(balanca, descriptions[0]);
+		sc.addLabObject(discodelezenne, descriptions[1]);
 	}
 
 	public StateController getStateController(){
@@ -45,7 +57,6 @@ public class MainController : MonoBehaviour {
 	void leftSwipe(){
 		sc.terminate();
 		sc.enterTutorial();
-		sc.nextTutorial(); // REMOVE LATER
 		sc.changeObject(1 /* left direction */);
 	}
 
