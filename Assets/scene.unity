@@ -2130,7 +2130,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Swipe left and right to view the next or the previous object
+  m_Text: Swipe left or right to view the next or the previous object
 --- !u!222 &1394493200
 CanvasRenderer:
   m_ObjectHideFlags: 0

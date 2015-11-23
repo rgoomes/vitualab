@@ -10,7 +10,7 @@ public class StateController {
 	const int TUT0_SCREEN    =  1; // ZOOM
 	const int TUT1_SCREEN    =  2; // ROTATE
 	const int TUT2_SCREEN    =  3; // CHANGE
-	const int TUT3_SCREEN    =  4; // PICK
+	const int TUT3_SCREEN    =  4; // TAP
 	const int TUT4_SCREEN    =  5; // CIRCULAR
 	const int LABORATORY     =  6;
 
@@ -247,9 +247,13 @@ public class StateController {
 		changeDescription();
 	}
 
-	public void checkSwipeTutorial(){
-		if(getPlace() != TUT2_SCREEN)
+	/* simple tutorial verification */
+	public void checkTutorial(int DESIRED_SCREEN){
+		if(getPlace() != DESIRED_SCREEN)
 			return;
+
+		/* extra verifications here, like minimun velocity.
+		   pass verification parameters in a struct or class */
 
 		this.successTutorial();
 	}

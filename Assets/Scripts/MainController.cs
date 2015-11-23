@@ -55,13 +55,18 @@ public class MainController : MonoBehaviour {
 	}
 
 	void leftSwipe(){
+		/* verify tutorial */
+		sc.checkTutorial(3 /* TUT2_SCREEN */);
+
 		sc.terminate();
 		sc.enterTutorial();
 		sc.changeObject(1 /* left direction */);
 	}
 
 	void rightSwipe(){
-		sc.checkSwipeTutorial();
+		/* verify tutorial */
+		sc.checkTutorial(3 /* TUT2_SCREEN */);
+
 		sc.skipTutorial();
 		sc.backToMainMenu();
 		sc.changeObject(-1 /* right direction */);
@@ -104,11 +109,18 @@ public class MainController : MonoBehaviour {
 				sc.changeVolume(power);
 
 				/* disco angle */
-				float angle = Circle.Radius;
+				// float angle = Circle.Radius;
 				// TODO: sc.rotateDisco(angle);
+
+				/* verify tutorial */
+				sc.checkTutorial(5 /* TUT4_SCREEN */);
+
 
 			} else if(g.Type == Gesture.GestureType.TYPESCREENTAP){
 				// TODO: To animate the bell and play the sound
+
+				/* verify tutorial */
+				sc.checkTutorial(4 /* TUT3_SCREEN */);
 			}
 		}
 	}
@@ -120,8 +132,13 @@ public class MainController : MonoBehaviour {
 		const float lowerFactor = 0.75f;
 		const float upperFactor = 1.25f;
 
-		if(scaleFactor < lowerFactor || scaleFactor > upperFactor)
-			sc.scaleAnimation(scaleFactor);
+		if(scaleFactor >= lowerFactor && scaleFactor <= upperFactor)
+			return;
+
+		/* verify tutorial */
+		sc.checkTutorial(1 /* TUT0_SCREEN */);
+
+		sc.scaleAnimation(scaleFactor);
 	}
 
 	void rotateMotion(){
@@ -131,6 +148,9 @@ public class MainController : MonoBehaviour {
 		const float minAngle = 25.0f;
 		if(Mathf.Abs(rotationAngle) < minAngle)
 			return;
+
+		/* verify tutorial */
+		sc.checkTutorial(2 /* TUT1_SCREEN */);
 
 		int isClockwise = (rotationAngle < 0) ? -1 : 1;
 		sc.rotateAnimation(rotationAngle, isClockwise);
