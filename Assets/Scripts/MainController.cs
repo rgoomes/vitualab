@@ -145,7 +145,7 @@ public class MainController : MonoBehaviour {
 		/* rotation angle in degrees from the tenth frame to current frame */
 		float rotationAngle = curFrame.RotationAngle(ct.Frame(10), Vector.YAxis) * (180 / Mathf.PI);
 
-		const float minAngle = 25.0f;
+		const float minAngle = 35.0f;
 		if(Mathf.Abs(rotationAngle) < minAngle)
 			return;
 

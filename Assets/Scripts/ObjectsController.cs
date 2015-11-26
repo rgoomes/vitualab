@@ -66,8 +66,8 @@ public class ObjectsController {
 	}
 
 	public void rotateObject(float angle, int clockwise){
-		float delta = Time.deltaTime * 10;
-		getCurObject().transform.Rotate(clockwise*Vector3.up, angle*delta);
+		float delta = Time.deltaTime * 5;
+		getCurObject().transform.Rotate(clockwise*Vector3.up, Mathf.Abs(angle)*delta);
 	}
 
 	public float getCurObjScaleFactor(){
@@ -75,7 +75,7 @@ public class ObjectsController {
 	}
 
 	public void scaleObject(float scaleFactor){
-		float delta = Time.deltaTime * 10;
+		float delta = Time.deltaTime * 100;
 
 		int isZoomIn   = (scaleFactor < 1) ? -1 : 1;
 		float scaleVal = scaleFactor * delta;
