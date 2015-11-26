@@ -13,7 +13,7 @@ public class MainController : MonoBehaviour {
 	public GameObject descriptionText;
 
 	// Declare here all objects
-	public GameObject balanca;
+	public GameObject sino;
 	public GameObject discodelezenne;
 
 	StateController sc; /* for menus */
@@ -31,14 +31,14 @@ public class MainController : MonoBehaviour {
 		ct.Config.Save();
 
 		descriptions = new List<string>(new string[] {
-			"A balanca etc. asdas dasd asd asdas asd as dasd 1231 23ads asd asd as as d",
+			"O sino etc. asdas dasd asd asdas asd as dasd 1231 23ads asd asd as as d",
 			"O disco de delezenne asd123asdasd asdasd123as dasdas 123 123 asdas asd asd asd"
 		});
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon,
 		                         successSound, descriptionText);
 
-		sc.addLabObject(balanca, descriptions[0]);
+		sc.addLabObject(sino, descriptions[0]);
 		sc.addLabObject(discodelezenne, descriptions[1]);
 	}
 
