@@ -12,6 +12,12 @@ ModelImporter:
     100008: fio2
     100010: lampada
     100012: lamp
+    100014: arco_madeira
+    100016: arco_metal
+    100018: lampada_aros
+    100020: lampada_base
+    100022: lampada_vidro
+    100024: suportes
     400000: arco
     400002: base
     400004: //RootNode
@@ -19,24 +25,48 @@ ModelImporter:
     400008: fio2
     400010: lampada
     400012: lamp
+    400014: arco_madeira
+    400016: arco_metal
+    400018: lampada_aros
+    400020: lampada_base
+    400022: lampada_vidro
+    400024: suportes
     2300000: arco
     2300002: base
     2300004: fio1
     2300006: fio2
     2300008: lampada
     2300010: lamp
+    2300012: arco_madeira
+    2300014: arco_metal
+    2300016: lampada_aros
+    2300018: lampada_base
+    2300020: lampada_vidro
+    2300022: suportes
     3300000: arco
     3300002: base
     3300004: fio1
     3300006: fio2
     3300008: lampada
     3300010: lamp
+    3300012: arco_madeira
+    3300014: arco_metal
+    3300016: lampada_aros
+    3300018: lampada_base
+    3300020: lampada_vidro
+    3300022: suportes
     4300000: fio1
     4300002: lampada
     4300004: arco
     4300006: fio2
     4300008: base
     4300010: lamp
+    4300012: lampada_aros
+    4300014: lampada_vidro
+    4300016: lampada_base
+    4300018: suportes
+    4300020: arco_metal
+    4300022: arco_madeira
     9500000: //RootNode
   materials:
     importMaterials: 1
