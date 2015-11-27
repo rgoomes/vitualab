@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ObjectsController {
 
 	const float MIN_SCALE_FACTOR =  50.0f;
-	const float MAX_SCALE_FACTOR = 150.0f;
+	List<float> scaleFactors;
 
 	List<GameObject> labObjects;
 	List<string> objectsDecription;
@@ -18,6 +18,8 @@ public class ObjectsController {
 		labObjects = new List<GameObject>();
 		objectsDecription = new List<string>();
 		cur_obj = 0;
+
+		scaleFactors = new List<float>(new float[] { 240.0f, 150.0f});
 	}
 
 	public int objectsNumber(){
@@ -83,7 +85,7 @@ public class ObjectsController {
 		/* reached lower and upper bounds */
 		if(getCurObjScaleFactor() + isZoomIn*scaleVal < MIN_SCALE_FACTOR)
 			return;
-		if(getCurObjScaleFactor() + isZoomIn*scaleVal > MAX_SCALE_FACTOR)
+		if(getCurObjScaleFactor() + isZoomIn*scaleVal > scaleFactors[getCurObjPos()])
 			return;
 
 		getCurObject().transform.localScale += isZoomIn * new Vector3(scaleVal, scaleVal, scaleVal);
