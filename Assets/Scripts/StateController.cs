@@ -27,6 +27,7 @@ public class StateController {
 	GameObject successSound;
 	GameObject descriptionText;
 	GameObject previewImages;
+	GameObject leapObject;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
@@ -36,7 +37,7 @@ public class StateController {
 	int volume;
 
 	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp, GameObject si,
-	                       GameObject ss, GameObject dt, GameObject pp){
+	                       GameObject ss, GameObject dt, GameObject pp, GameObject lm){
 
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
@@ -47,6 +48,7 @@ public class StateController {
 		this.successSound = ss;
 		this.descriptionText = dt;
 		this.previewImages = pp;
+		this.leapObject = lm;
 
 		volume = 100;
 
@@ -131,6 +133,7 @@ public class StateController {
 			return;
 
 		oc.setSetObject(true);
+		hideLeapmotion();
 
 		this.setPlace(LABORATORY);
 		this.setLastPlace(MAIN_SCREEN);
@@ -194,6 +197,7 @@ public class StateController {
 		controlPanel.GetComponent<Animation>().Play("goto_lab");
 
 		playSuccessSound();
+		hideLeapmotion();
 	}
 
 	public void backToMainMenu(){
@@ -204,8 +208,10 @@ public class StateController {
 		if(getLastPlace() < MAIN_SCREEN || getLastPlace() > LABORATORY)
 			return;
 
-		if(getLastPlace() == LABORATORY)
+		if(getLastPlace() == LABORATORY){
 			oc.hideLabObject();
+			showLeapmotion();
+		}
 
 		int old_last = getLastPlace();
 		this.setLastPlace(getPlace());
@@ -325,6 +331,26 @@ public class StateController {
 
 		string path = "Sprites/SoundIcon/128/" + val;
 		soundIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>(path);
+	}
+
+	public void showLeapmotion(){
+		leapObject.GetComponent<Animation>().Play("showleap");
+	}
+
+	public void hideLeapmotion(){
+		leapObject.GetComponent<Animation>().Play("hideleap");
+	}
+
+	public void rotateDisco(GameObject arco, float angle){
+		if(getPlace() != LABORATORY)
+			return;
+		if(oc.getCurObjPos() != 1 /* default disco pos */)
+			return;
+
+		float delta = Time.deltaTime * 10;
+		arco.transform.Rotate(Vector3.back, angle*delta);
+
+		// TODO: increase light intensity here
 	}
 
 	public void terminate(){

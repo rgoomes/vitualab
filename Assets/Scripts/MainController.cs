@@ -12,6 +12,8 @@ public class MainController : MonoBehaviour {
 	public GameObject successSound;
 	public GameObject descriptionText;
 	public GameObject previewImages;
+	public GameObject leapMotionObject;
+	public GameObject arco;
 
 	// Declare here all objects
 	public GameObject sino;
@@ -23,6 +25,13 @@ public class MainController : MonoBehaviour {
 	Frame curFrame = null;
 
 	List<string> descriptions;
+	string sinoDesc  = "A sineta consta de um sino, fixo numa trave horizonal de madeira, " +
+		"sustentada por duas colunas verticais erguidas numa prancha rectangular que faz " +
+		"de base. Esta sineta destinava-se a provar que os corpos se deformam quando vibram. ";
+
+	string discoDesc = "O Disco de delezenne é um dispositivo constituido por um anel circular " +
+		"em torno do qual está enrolado um fio de cobre que pode efectuar um movimento de rotação" +
+		" em torno de um eixo orientado segundo uma linha diametral do anel.";
 	
 	void Start(){
 		ct = new Controller();
@@ -31,13 +40,10 @@ public class MainController : MonoBehaviour {
 		ct.EnableGesture(Gesture.GestureType.TYPESCREENTAP);
 		ct.Config.Save();
 
-		descriptions = new List<string>(new string[] {
-			"O sino etc. asdas dasd asd asdas asd as dasd 1231 23ads asd asd as as d",
-			"O disco de delezenne asd123asdasd asdasd123as dasdas 123 123 asdas asd asd asd"
-		});
+		descriptions = new List<string>(new string[] { sinoDesc, discoDesc });
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon,
-		                         successSound, descriptionText, previewImages);
+		                         successSound, descriptionText, previewImages, leapMotionObject);
 
 		sc.addLabObject(sino, descriptions[0]);
 		sc.addLabObject(discodelezenne, descriptions[1]);
@@ -109,9 +115,9 @@ public class MainController : MonoBehaviour {
 				int power = Mathf.RoundToInt(Circle.Radius / 10.0f /* mm to cm */ ) * clockwise;
 				sc.changeVolume(power);
 
-				/* disco angle */
-				// float angle = Circle.Radius;
-				// TODO: sc.rotateDisco(angle);
+				/* disco rotation */
+				float angle = Circle.Radius;
+				sc.rotateDisco(arco, angle*clockwise);
 
 				/* verify tutorial */
 				sc.checkTutorial(5 /* TUT4_SCREEN */);
@@ -185,17 +191,21 @@ public class MainController : MonoBehaviour {
 
 		/* test motion */
 		if(Input.GetKey(KeyCode.R) == true )
-			sc.rotateAnimation(2.0f, 1);
+			sc.rotateAnimation(10.0f, 1);
 		if(Input.GetKey(KeyCode.A) == true )
-			sc.scaleAnimation(1.5f);
+			sc.scaleAnimation(1.50f);
 		if(Input.GetKey(KeyCode.D) == true )
-			sc.scaleAnimation(0.5f);
+			sc.scaleAnimation(0.75f);
 
 		/* test sound */
 		if(Input.GetKey(KeyCode.H) == true )
 			sc.changeVolume(1);
 		if(Input.GetKey(KeyCode.L) == true )
 			sc.changeVolume(-1);
+
+		/* test interactions */
+		if(Input.GetKey(KeyCode.I) == true )
+			sc.rotateDisco(arco, 20.0f);
 
 	}
 
