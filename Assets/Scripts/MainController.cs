@@ -11,6 +11,7 @@ public class MainController : MonoBehaviour {
 	public GameObject soundIcon;
 	public GameObject successSound;
 	public GameObject descriptionText;
+	public GameObject previewImages;
 
 	// Declare here all objects
 	public GameObject sino;
@@ -36,7 +37,7 @@ public class MainController : MonoBehaviour {
 		});
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon,
-		                         successSound, descriptionText);
+		                         successSound, descriptionText, previewImages);
 
 		sc.addLabObject(sino, descriptions[0]);
 		sc.addLabObject(discodelezenne, descriptions[1]);
@@ -129,8 +130,8 @@ public class MainController : MonoBehaviour {
 		/* get scale factor from the tenth frame to current frame */
 		float scaleFactor = curFrame.ScaleFactor(ct.Frame(10));
 
-		const float lowerFactor = 0.75f;
-		const float upperFactor = 1.25f;
+		const float lowerFactor = 0.70f;
+		const float upperFactor = 1.30f;
 
 		if(scaleFactor >= lowerFactor && scaleFactor <= upperFactor)
 			return;
@@ -145,7 +146,7 @@ public class MainController : MonoBehaviour {
 		/* rotation angle in degrees from the tenth frame to current frame */
 		float rotationAngle = curFrame.RotationAngle(ct.Frame(10), Vector.YAxis) * (180 / Mathf.PI);
 
-		const float minAngle = 35.0f;
+		const float minAngle = 30.0f;
 		if(Mathf.Abs(rotationAngle) < minAngle)
 			return;
 

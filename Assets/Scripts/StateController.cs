@@ -26,6 +26,7 @@ public class StateController {
 	GameObject soundIcon;
 	GameObject successSound;
 	GameObject descriptionText;
+	GameObject previewImages;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
@@ -35,7 +36,7 @@ public class StateController {
 	int volume;
 
 	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp, GameObject si,
-	                       GameObject ss, GameObject dt){
+	                       GameObject ss, GameObject dt, GameObject pp){
 
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
@@ -45,6 +46,7 @@ public class StateController {
 		this.soundIcon = si;
 		this.successSound = ss;
 		this.descriptionText = dt;
+		this.previewImages = pp;
 
 		volume = 100;
 
@@ -222,6 +224,19 @@ public class StateController {
 		desc.text = oc.getCurObjDescription();
 	}
 
+	public void updatePreviewPanel(int dir){
+		const float default_width  = 1920.0f;
+		const float images_between = 128.0f;
+
+		float desvio = Screen.width*images_between / default_width * -dir;
+
+		previewImages.transform.position = new Vector3(
+			previewImages.transform.position.x + desvio,
+			previewImages.transform.position.y,
+			previewImages.transform.position.z
+		);
+	}
+
 	public void changeObject(int dir /* direction of swipe */ ){
 		if(!this.canAnimate())
 			return;
@@ -242,6 +257,8 @@ public class StateController {
 
 			oc.getObject(showPos).GetComponent<Animation>().Play("show_object"   + (dir == LEFT ? "_left" : "_right"));
 			oc.getObject(remoPos).GetComponent<Animation>().Play("remove_object" + (dir == LEFT ? "_left" : "_right"));
+
+			updatePreviewPanel(dir);
 		}
 
 		changeDescription();
