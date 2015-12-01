@@ -14,6 +14,7 @@ public class MainController : MonoBehaviour {
 	public GameObject previewImages;
 	public GameObject leapMotionObject;
 	public GameObject arco;
+	public GameObject discoCamera;
 
 	// Declare here all objects
 	public GameObject sino;
@@ -24,12 +25,14 @@ public class MainController : MonoBehaviour {
 
 	Frame curFrame = null;
 
+	bool interacting = false;
+
 	List<string> descriptions;
-	string sinoDesc  = "A sineta consta de um sino, fixo numa trave horizonal de madeira, " +
+	string sinoDesc  = "A Sineta consta de um sino, fixo numa trave horizonal de madeira, " +
 		"sustentada por duas colunas verticais erguidas numa prancha rectangular que faz " +
 		"de base. Esta sineta destinava-se a provar que os corpos se deformam quando vibram. ";
 
-	string discoDesc = "O Disco de delezenne é um dispositivo constituido por um anel circular " +
+	string discoDesc = "O Disco de Delezenne é um dispositivo constituido por um anel circular " +
 		"em torno do qual está enrolado um fio de cobre que pode efectuar um movimento de rotação" +
 		" em torno de um eixo orientado segundo uma linha diametral do anel.";
 	
@@ -43,7 +46,7 @@ public class MainController : MonoBehaviour {
 		descriptions = new List<string>(new string[] { sinoDesc, discoDesc });
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon,
-		                         successSound, descriptionText, previewImages, leapMotionObject);
+		                         successSound, descriptionText, previewImages, leapMotionObject, discoCamera);
 
 		sc.addLabObject(sino, descriptions[0]);
 		sc.addLabObject(discodelezenne, descriptions[1]);
@@ -117,7 +120,7 @@ public class MainController : MonoBehaviour {
 
 				/* disco rotation */
 				float angle = Circle.Radius;
-				sc.rotateDisco(arco, angle*clockwise);
+				interacting = sc.rotateDisco(arco, angle*clockwise);
 
 				/* verify tutorial */
 				sc.checkTutorial(5 /* TUT4_SCREEN */);
@@ -205,13 +208,20 @@ public class MainController : MonoBehaviour {
 
 		/* test interactions */
 		if(Input.GetKey(KeyCode.I) == true )
-			sc.rotateDisco(arco, 20.0f);
+			interacting = sc.rotateDisco(arco, 20.0f);
 
+	}
+
+	bool isInteracting(){
+		return this.interacting;
 	}
 
 	void Update(){
 		/* update current frame */
 		curFrame = ct.Frame();
+
+		/* default value: not interacting */
+		this.interacting = false;
 
 		// Listen to leapmotion default gestures
 		listenGestures();
@@ -222,6 +232,6 @@ public class MainController : MonoBehaviour {
 		kbInputTest();
 
 		// Update state controller
-		sc.update();
+		sc.update(isInteracting());
 	}
 }

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.ImageEffects;
 
 public class StateController {
 	const int SUCCESS_SCREEN = -2;
@@ -28,6 +29,7 @@ public class StateController {
 	GameObject descriptionText;
 	GameObject previewImages;
 	GameObject leapObject;
+	GameObject discoCamera;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
@@ -35,9 +37,10 @@ public class StateController {
 	ObjectsController oc;
 
 	int volume;
+	float bloom;
 
 	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp, GameObject si,
-	                       GameObject ss, GameObject dt, GameObject pp, GameObject lm){
+	                       GameObject ss, GameObject dt, GameObject pp, GameObject lm, GameObject dc){
 
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
@@ -49,8 +52,10 @@ public class StateController {
 		this.descriptionText = dt;
 		this.previewImages = pp;
 		this.leapObject = lm;
+		this.discoCamera = dc;
 
 		volume = 100;
+		bloom  = 0;
 
 		oc = new ObjectsController();
 
@@ -232,7 +237,7 @@ public class StateController {
 
 	public void updatePreviewPanel(int dir){
 		const float default_width  = 1920.0f;
-		const float images_between = 128.0f;
+		const float images_between = 150.0f;
 
 		float desvio = Screen.width*images_between / default_width * -dir;
 
@@ -341,16 +346,20 @@ public class StateController {
 		leapObject.GetComponent<Animation>().Play("hideleap");
 	}
 
-	public void rotateDisco(GameObject arco, float angle){
+	public bool rotateDisco(GameObject arco, float angle){
 		if(getPlace() != LABORATORY)
-			return;
+			return false;
 		if(oc.getCurObjPos() != 1 /* default disco pos */)
-			return;
+			return false;
 
 		float delta = Time.deltaTime * 10;
 		arco.transform.Rotate(Vector3.back, angle*delta);
 
-		// TODO: increase light intensity here
+		float inc = Random.Range(-2.65f, 4.0f);
+		bloom = Mathf.Min(bloom + inc*delta, 25);
+		discoCamera.GetComponent<Bloom>().bloomIntensity = bloom;
+
+		return true;
 	}
 
 	public void terminate(){
@@ -358,11 +367,17 @@ public class StateController {
 			Application.Quit();
 	}
 
-	public void update(){
+	public void update(bool isInteracting){
 		if(this.canSetObject()){
 			oc.showLabObject();
 			changeDescription();
 			oc.setSetObject(false);
+		}
+
+		if(!isInteracting){
+			float delta = Time.deltaTime * 45;
+			bloom = Mathf.Max(bloom-delta, 0);
+			discoCamera.GetComponent<Bloom>().bloomIntensity = bloom;
 		}
 	}
 }
