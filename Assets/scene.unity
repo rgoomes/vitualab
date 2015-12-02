@@ -737,11 +737,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1473453328}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700, y: 450}
+  m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &453219310
 MonoBehaviour:
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: e7815df7fb11bf54385fa96e7499ac7e, type: 3}
+  movie: {fileID: 15200000, guid: 773cb5a3c22ad71428e89b758c915095, type: 3}
 --- !u!114 &453219311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,9 +852,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Main
+  m_Text: 'Exit
 
-    Menu'
+    VituaLab'
 --- !u!222 &455431938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -958,7 +958,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1473453328}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .322437495, y: .824000061}
   m_AnchorMax: {x: .670666814, y: .972647727}
   m_AnchoredPosition: {x: .899999976, y: -3.05175781e-05}
@@ -1067,7 +1067,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enter
+  m_Text: 'Skip
 
     Tutorial'
 --- !u!222 &593487393
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: .765517235, a: .39199999}
+  m_Color: {r: .294117659, g: .294117659, b: .294117659, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .944827557, g: 1, b: 0, a: .39199999}
+  m_Color: {r: .294117659, g: .294117659, b: .294117659, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1853,7 +1853,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Skip
+  m_Text: 'Enter
 
     Tutorial'
 --- !u!222 &847678692
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: .475862026, a: .39199999}
+  m_Color: {r: 1, g: .235294104, b: .235294104, a: .39199999}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: ad677e9320a3aa44ab5307e19ec545ed, type: 3}
+  movie: {fileID: 15200000, guid: d0bf582008946104eb95670310724ccb, type: 3}
 --- !u!114 &1199049448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2516,7 +2516,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700, y: 450}
+  m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &1212255465
 Prefab:
@@ -3209,7 +3209,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2046111466}
   - {fileID: 1596224043}
   - {fileID: 535108983}
   - {fileID: 453219309}
@@ -3232,7 +3231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: .462068558, b: 1, a: .39199999}
+  m_Color: {r: .294117659, g: .294117659, b: .294117659, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3302,7 +3301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: .00689649582, a: .39199999}
+  m_Color: {r: .294117659, g: .294117659, b: .294117659, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3351,7 +3350,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1473453328}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -380}
@@ -3500,7 +3499,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700, y: 450}
+  m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1603772486
 MonoBehaviour:
@@ -3513,7 +3512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: 24b17efc52e3cd44cac1a315e80884fe, type: 3}
+  movie: {fileID: 15200000, guid: 545a18929a5f2b141af27ce88935909a, type: 3}
 --- !u!114 &1603772487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3653,7 +3652,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700, y: 450}
+  m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1659453021
 MonoBehaviour:
@@ -3666,7 +3665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: 9db9a8c0ffb363f489183aace63c79c5, type: 3}
+  movie: {fileID: 15200000, guid: 977e49924ccb2fb42b075d6d070cbf1c, type: 3}
 --- !u!114 &1659453022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4128,9 +4127,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Exit
+  m_Text: 'Main
 
-    VituaLab'
+    Menu'
 --- !u!222 &1948400553
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4278,78 +4277,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1983196219}
---- !u!1 &2046111465
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 2046111466}
-  - 222: {fileID: 2046111468}
-  - 114: {fileID: 2046111467}
-  m_Layer: 5
-  m_Name: pickText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2046111466
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2046111465}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1473453328}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .322437495, y: .824000061}
-  m_AnchorMax: {x: .670666814, y: .972647727}
-  m_AnchoredPosition: {x: -5760, y: -3.05175781e-05}
-  m_SizeDelta: {x: -.000244140625, y: -3.05175781e-05}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &2046111467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2046111465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 1
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Zoom In/Out object
---- !u!222 &2046111468
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2046111465}
 --- !u!1 &2062687227
 GameObject:
   m_ObjectHideFlags: 0
@@ -4415,7 +4342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Zoom In/Out object
+  m_Text: Zoom in/out object
 --- !u!222 &2062687230
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4671,7 +4598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: .875862181, a: .39199999}
+  m_Color: {r: .203827888, g: .95588237, b: .271253258, a: .588235319}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4760,7 +4687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: .39199999}
+  m_Color: {r: .294117659, g: .294117659, b: .294117659, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4814,7 +4741,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700, y: 450}
+  m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2144928986
 MonoBehaviour:
@@ -4827,7 +4754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movie: {fileID: 15200000, guid: fab99fd3099bfce4c81f2b9dbcc51365, type: 3}
+  movie: {fileID: 15200000, guid: 17816d33904996d4f84ba076a9eb4ddb, type: 3}
 --- !u!114 &2144928987
 MonoBehaviour:
   m_ObjectHideFlags: 0
