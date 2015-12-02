@@ -3018,6 +3018,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad4273482b29564478c25d9066cbc090, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1445343577 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: ad4273482b29564478c25d9066cbc090, type: 3}
+  m_PrefabInternal: {fileID: 1445343576}
 --- !u!1 &1468588426
 GameObject:
   m_ObjectHideFlags: 0
@@ -4523,15 +4527,15 @@ MonoBehaviour:
   controlPanel: {fileID: 735809590}
   optionsPanel: {fileID: 62480188}
   successPanel: {fileID: 2133125179}
-  congratzPanel: {fileID: 0}
-  soundIcon: {fileID: 0}
-  successSound: {fileID: 0}
-  descriptionText: {fileID: 0}
-  previewImages: {fileID: 0}
-  leapMotionObject: {fileID: 0}
-  arco: {fileID: 0}
-  discoCamera: {fileID: 0}
-  sino: {fileID: 0}
+  congratzPanel: {fileID: 1195514017}
+  soundIcon: {fileID: 2084439416}
+  successSound: {fileID: 887534930}
+  descriptionText: {fileID: 893409730}
+  previewImages: {fileID: 505295318}
+  leapMotionObject: {fileID: 960374692}
+  arco: {fileID: 1445343577}
+  discoCamera: {fileID: 771356379}
+  sino: {fileID: 752139668}
   discodelezenne: {fileID: 2145071646}
 --- !u!4 &2109270739
 Transform:
