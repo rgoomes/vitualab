@@ -44,10 +44,10 @@ Assets/Plugins.meta
 Assets/Plugins/
 
 # Image Effects
-Assets/Editor
-Assets/Standard Assets
-Assets/Editor.meta
-Assets/Standard Assets.meta
+#Assets/Editor
+#Assets/Standard Assets
+#Assets/Editor.meta
+#Assets/Standard Assets.meta
 
 # Garbage
 .DS_Store
