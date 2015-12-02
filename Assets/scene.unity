@@ -1132,7 +1132,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rotate your hand to ...
+  m_Text: Rotate your hand to interact with an object
 --- !u!222 &687839713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3493,9 +3493,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tap on an object to ...
-
-'
+  m_Text: Tap on an object to interact with it
 --- !u!222 &1556365026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4488,7 +4486,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rotate (?)
+  m_Text: Circular Swipe
 --- !u!222 &2100188884
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4525,7 +4523,15 @@ MonoBehaviour:
   controlPanel: {fileID: 735809590}
   optionsPanel: {fileID: 62480188}
   successPanel: {fileID: 2133125179}
-  balanca: {fileID: 0}
+  congratzPanel: {fileID: 0}
+  soundIcon: {fileID: 0}
+  successSound: {fileID: 0}
+  descriptionText: {fileID: 0}
+  previewImages: {fileID: 0}
+  leapMotionObject: {fileID: 0}
+  arco: {fileID: 0}
+  discoCamera: {fileID: 0}
+  sino: {fileID: 0}
   discodelezenne: {fileID: 2145071646}
 --- !u!4 &2109270739
 Transform:
