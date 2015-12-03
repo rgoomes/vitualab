@@ -137,10 +137,10 @@ public class MainController : MonoBehaviour {
 
 	void scaleMotion(){
 		/* get scale factor from the tenth frame to current frame */
-		float scaleFactor = curFrame.ScaleFactor(ct.Frame(10));
+		float scaleFactor = curFrame.ScaleFactor(ct.Frame(5));
 
-		const float lowerFactor = 0.70f;
-		const float upperFactor = 1.30f;
+		const float lowerFactor = 0.90f;
+		const float upperFactor = 1.15f;
 
 		if(scaleFactor >= lowerFactor && scaleFactor <= upperFactor)
 			return;
@@ -155,8 +155,9 @@ public class MainController : MonoBehaviour {
 		/* rotation angle in degrees from the tenth frame to current frame */
 		float rotationAngle = curFrame.RotationAngle(ct.Frame(10), Vector.YAxis) * (180 / Mathf.PI);
 
-		const float minAngle = 30.0f;
-		if(Mathf.Abs(rotationAngle) < minAngle)
+		const float minAngle = 10.0f;
+
+		if(Mathf.Abs(rotationAngle) > minAngle)
 			return;
 
 		/* verify tutorial */

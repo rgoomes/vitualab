@@ -68,7 +68,7 @@ public class ObjectsController {
 	}
 
 	public void rotateObject(float angle, int clockwise){
-		float delta = Time.deltaTime * 5;
+		float delta = Time.deltaTime * 10;
 		getCurObject().transform.Rotate(clockwise*Vector3.up, Mathf.Abs(angle)*delta);
 	}
 
