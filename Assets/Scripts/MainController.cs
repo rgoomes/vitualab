@@ -15,6 +15,7 @@ public class MainController : MonoBehaviour {
 	public GameObject leapMotionObject;
 	public GameObject arco;
 	public GameObject discoCamera;
+	public GameObject bellSound;
 
 	// Declare here all objects
 	public GameObject sino;
@@ -46,7 +47,7 @@ public class MainController : MonoBehaviour {
 		descriptions = new List<string>(new string[] { sinoDesc, discoDesc });
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon,
-		                         successSound, descriptionText, previewImages, leapMotionObject, discoCamera);
+		                         successSound, descriptionText, previewImages, leapMotionObject, discoCamera, bellSound);
 
 		sc.addLabObject(sino, descriptions[0]);
 		sc.addLabObject(discodelezenne, descriptions[1]);
@@ -124,10 +125,9 @@ public class MainController : MonoBehaviour {
 
 				/* verify tutorial */
 				sc.checkTutorial(5 /* TUT4_SCREEN */);
-
-
 			} else if(g.Type == Gesture.GestureType.TYPESCREENTAP){
-				// TODO: To animate the bell and play the sound
+				// TODO: Animate the bell
+				sc.playBellSound();
 
 				/* verify tutorial */
 				sc.checkTutorial(4 /* TUT3_SCREEN */);
@@ -208,8 +208,10 @@ public class MainController : MonoBehaviour {
 			sc.changeVolume(-1);
 
 		/* test interactions */
-		if(Input.GetKey(KeyCode.I) == true )
+		if(Input.GetKey(KeyCode.I) == true ){
 			interacting = sc.rotateDisco(arco, 20.0f);
+			sc.playBellSound();
+		}
 
 	}
 

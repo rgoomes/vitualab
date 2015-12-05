@@ -30,6 +30,7 @@ public class StateController {
 	GameObject previewImages;
 	GameObject leapObject;
 	GameObject discoCamera;
+	GameObject bellSound;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
@@ -40,7 +41,7 @@ public class StateController {
 	float bloom;
 
 	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp, GameObject si,
-	                       GameObject ss, GameObject dt, GameObject pp, GameObject lm, GameObject dc){
+	                       GameObject ss, GameObject dt, GameObject pp, GameObject lm, GameObject dc, GameObject bs){
 
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
@@ -53,6 +54,7 @@ public class StateController {
 		this.previewImages = pp;
 		this.leapObject = lm;
 		this.discoCamera = dc;
+		this.bellSound = bs;
 
 		volume = 100;
 		bloom  = 0;
@@ -360,6 +362,20 @@ public class StateController {
 		discoCamera.GetComponent<Bloom>().bloomIntensity = bloom;
 
 		return true;
+	}
+
+	public void playBellSound(){
+		if(getPlace() != LABORATORY)
+			return;
+		if(oc.getCurObjPos() != 0 /* default bell pos */)
+			return;
+
+		AudioSource audio = bellSound.GetComponent<AudioSource>();
+		if(audio.isPlaying)
+			return;
+
+		audio.volume = getVolume() / 100.0f;
+		audio.Play();
 	}
 
 	public void terminate(){
