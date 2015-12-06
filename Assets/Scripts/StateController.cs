@@ -116,6 +116,9 @@ public class StateController {
 			return;
 		if(getPlace() == OPTIONS_SCREEN)
 			return;
+
+		if(getPlace() == MAIN_SCREEN)
+			uphideLeapmotion();
 		
 		this.setLastPlace(getPlace());
 		this.setPlace(OPTIONS_SCREEN);
@@ -127,6 +130,9 @@ public class StateController {
 			return;
 		if(getPlace() != OPTIONS_SCREEN)
 			return;
+
+		if(getLastPlace() == MAIN_SCREEN)
+			downshowLeapmotion();
 		
 		this.setPlace(this.getLastPlace());
 		this.setLastPlace(OPTIONS_SCREEN);
@@ -152,6 +158,8 @@ public class StateController {
 			return;
 		if(getPlace() != MAIN_SCREEN)
 			return;
+
+		leapObject.GetComponent<Animation>().Play("lefthide");
 		
 		this.setPlace(TUT0_SCREEN);
 		this.setLastPlace(MAIN_SCREEN);
@@ -204,7 +212,6 @@ public class StateController {
 		controlPanel.GetComponent<Animation>().Play("goto_lab");
 
 		playSuccessSound();
-		hideLeapmotion();
 	}
 
 	public void backToMainMenu(){
@@ -215,10 +222,13 @@ public class StateController {
 		if(getLastPlace() < MAIN_SCREEN || getLastPlace() > LABORATORY)
 			return;
 
-		if(getLastPlace() == LABORATORY){
-			oc.hideLabObject();
+		if(getLastPlace() != MAIN_SCREEN)
 			showLeapmotion();
-		}
+		else
+			downshowLeapmotion();
+
+		if(getLastPlace() == LABORATORY)
+			oc.hideLabObject();
 
 		int old_last = getLastPlace();
 		this.setLastPlace(getPlace());
@@ -338,6 +348,14 @@ public class StateController {
 
 		string path = "Sprites/SoundIcon/128/" + val;
 		soundIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>(path);
+	}
+
+	public void downshowLeapmotion(){
+		leapObject.GetComponent<Animation>().Play("downshow");
+	}
+	
+	public void uphideLeapmotion(){
+		leapObject.GetComponent<Animation>().Play("uphide");
 	}
 
 	public void showLeapmotion(){

@@ -150,7 +150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: " Zoom - Approach and distance both hands\n Next/Back - Do a horizontal
+  m_Text: " Zoom - Approach and distance both hands\n Next/Back - Do an horizontal
     swipe\n Rotate - Rotate your hands in depth\n Circle - Draw a circle with your
     finger\n Tap - Move the tip of your finger forward\n\n"
 --- !u!222 &55241172
@@ -830,7 +830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptController: {fileID: 2109270737}
   movie: {fileID: 15200000, guid: 773cb5a3c22ad71428e89b758c915095, type: 3}
+  place: 4
 --- !u!114 &453219311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,7 +973,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -1000, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &505295320
 MonoBehaviour:
@@ -2124,6 +2126,9 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 1b4b95145824c4a438308b0f3c99d141, type: 2}
   - {fileID: 7400000, guid: cc26965dd4e7bc744b17ecd854cd5853, type: 2}
+  - {fileID: 7400000, guid: 2efd368109973b148b39b9914e7a16aa, type: 2}
+  - {fileID: 7400000, guid: 892fd36446dab4741a327e713bde12f6, type: 2}
+  - {fileID: 7400000, guid: b86f7e17a732d9443bee269c875c018e, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -2389,8 +2394,8 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: .395479202, y: .0122196982}
   m_AnchorMax: {x: .602479219, y: .0586098507}
-  m_AnchoredPosition: {x: 1.5, y: 0}
-  m_SizeDelta: {x: 3, y: -2}
+  m_AnchoredPosition: {x: 11, y: 0}
+  m_SizeDelta: {x: 282, y: -2}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1182584628
 MonoBehaviour:
@@ -2544,7 +2549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptController: {fileID: 2109270737}
   movie: {fileID: 15200000, guid: d0bf582008946104eb95670310724ccb, type: 3}
+  place: 1
 --- !u!114 &1199049448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3573,8 +3580,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .40729171, y: .799768984}
   m_AnchorMax: {x: .583604157, y: .959136426}
-  m_AnchoredPosition: {x: 4.76837158e-05, y: 0}
-  m_SizeDelta: {x: 0, y: 7.62939999e-06}
+  m_AnchoredPosition: {x: 15, y: 0}
+  m_SizeDelta: {x: 267, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1602255509
 MonoBehaviour:
@@ -3660,7 +3667,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptController: {fileID: 2109270737}
   movie: {fileID: 15200000, guid: 545a18929a5f2b141af27ce88935909a, type: 3}
+  place: 2
 --- !u!114 &1603772487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3813,7 +3822,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptController: {fileID: 2109270737}
   movie: {fileID: 15200000, guid: 977e49924ccb2fb42b075d6d070cbf1c, type: 3}
+  place: 3
 --- !u!114 &1659453022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4382,8 +4393,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .368395835, y: .921287894}
   m_AnchorMax: {x: .630562544, y: .963195145}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: -4, y: -1}
+  m_AnchoredPosition: {x: -23, y: 0}
+  m_SizeDelta: {x: 121, y: -1}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1983196221
 MonoBehaviour:
@@ -5001,7 +5012,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc65e508c776b94cbdf63ce088fdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptController: {fileID: 2109270737}
   movie: {fileID: 15200000, guid: 17816d33904996d4f84ba076a9eb4ddb, type: 3}
+  place: 5
 --- !u!114 &2144928987
 MonoBehaviour:
   m_ObjectHideFlags: 0
