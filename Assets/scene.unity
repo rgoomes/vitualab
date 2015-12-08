@@ -602,7 +602,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -612,7 +612,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Proceeding to the next step of the tutorial...
+  m_Text: Proceeding to the next step of the tutorial..
 --- !u!222 &342568887
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3128,7 +3128,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Swipe left or right to view the next or the previous object
+  m_Text: 'Swipe left or right to view the next
+
+    or the previous object'
 --- !u!222 &1394493200
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3219,7 +3221,7 @@ Animator:
   m_GameObject: {fileID: 1395773298}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 99f0f0c14f545c746ac0ba3a424a6b23, type: 2}
+  m_Controller: {fileID: 9100000, guid: 603e06844cc55174ebfca075f1ba0f53, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4162,7 +4164,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rotate your hand to interact with an object
+  m_Text: 'Draw a circle with your finger
+
+    to interact with an object'
 --- !u!222 &1860244206
 CanvasRenderer:
   m_ObjectHideFlags: 0
