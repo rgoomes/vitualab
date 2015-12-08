@@ -31,6 +31,7 @@ public class StateController {
 	GameObject leapObject;
 	GameObject discoCamera;
 	GameObject bellSound;
+	GameObject backgroundImage;
 
 	List<Animation> animations;
 	List<string> tutorialAnimations, toMainAnimations;
@@ -41,7 +42,8 @@ public class StateController {
 	float bloom;
 
 	public StateController(GameObject cp, GameObject op, GameObject sp, GameObject gp, GameObject si,
-	                       GameObject ss, GameObject dt, GameObject pp, GameObject lm, GameObject dc, GameObject bs){
+	                       GameObject ss, GameObject dt, GameObject pp, GameObject lm, GameObject dc,
+	                       GameObject bs, GameObject bi){
 
 		this.place = last_place = MAIN_SCREEN;
 		this.controlPanel = cp;
@@ -55,6 +57,7 @@ public class StateController {
 		this.leapObject = lm;
 		this.discoCamera = dc;
 		this.bellSound = bs;
+		this.backgroundImage = bi;
 
 		volume = 100;
 		bloom  = 0;
@@ -148,6 +151,8 @@ public class StateController {
 		oc.setSetObject(true);
 		hideLeapmotion();
 
+		backgroundImage.GetComponent<Animation>().Play("backgroundskip");
+
 		this.setPlace(LABORATORY);
 		this.setLastPlace(MAIN_SCREEN);
 		controlPanel.GetComponent<Animation>().Play("skip_tutorial");
@@ -160,7 +165,8 @@ public class StateController {
 			return;
 
 		leapObject.GetComponent<Animation>().Play("lefthide");
-		
+		backgroundImage.GetComponent<Animation>().Play("backgroundenter");
+
 		this.setPlace(TUT0_SCREEN);
 		this.setLastPlace(MAIN_SCREEN);
 		controlPanel.GetComponent<Animation>().Play("enter_tutorial");
@@ -222,9 +228,10 @@ public class StateController {
 		if(getLastPlace() < MAIN_SCREEN || getLastPlace() > LABORATORY)
 			return;
 
-		if(getLastPlace() != MAIN_SCREEN)
+		if(getLastPlace() != MAIN_SCREEN) {
 			showLeapmotion();
-		else
+			backgroundImage.GetComponent<Animation>().Play("backgroundmain");
+		} else
 			downshowLeapmotion();
 
 		if(getLastPlace() == LABORATORY)

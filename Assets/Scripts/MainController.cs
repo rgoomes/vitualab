@@ -16,6 +16,7 @@ public class MainController : MonoBehaviour {
 	public GameObject arco;
 	public GameObject discoCamera;
 	public GameObject bellSound;
+	public GameObject backgroundImg;
 
 	// Declare here all objects
 	public GameObject sino;
@@ -47,7 +48,8 @@ public class MainController : MonoBehaviour {
 		descriptions = new List<string>(new string[] { sinoDesc, discoDesc });
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon,
-		                         successSound, descriptionText, previewImages, leapMotionObject, discoCamera, bellSound);
+		                         successSound, descriptionText, previewImages, leapMotionObject,
+		                         discoCamera, bellSound, backgroundImg);
 
 		sc.addLabObject(sino, descriptions[0]);
 		sc.addLabObject(discodelezenne, descriptions[1]);
