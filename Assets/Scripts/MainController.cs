@@ -42,8 +42,13 @@ public class MainController : MonoBehaviour {
 	void Start(){
 		ct = new Controller();
 		ct.EnableGesture(Gesture.GestureType.TYPESWIPE);
+		ct.Config.SetFloat("Gesture.Swipe.MinLength", 250.0f);
+
 		ct.EnableGesture(Gesture.GestureType.TYPECIRCLE);
 		ct.EnableGesture(Gesture.GestureType.TYPESCREENTAP);
+		ct.Config.SetFloat("Gesture.ScreenTap.MinForwardVelocity", 25.0f);
+		ct.Config.SetFloat("Gesture.ScreenTap.MinDistance", 1.0f);
+
 		ct.Config.Save();
 
 		descriptions = new List<string>(new string[] { sinoDesc, discoDesc });
@@ -127,7 +132,8 @@ public class MainController : MonoBehaviour {
 				interacting = sc.rotateDisco(arco, angle*clockwise);
 
 				/* verify tutorial */
-				sc.checkTutorial(5 /* TUT4_SCREEN */);
+				if(Circle.State == Gesture.GestureState.STATESTOP)
+					sc.checkTutorial(5 /* TUT4_SCREEN */);
 			} else if(g.Type == Gesture.GestureType.TYPESCREENTAP){
 				// TODO: Animate the bell
 				sc.playBellSound();

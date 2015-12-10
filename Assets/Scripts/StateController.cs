@@ -313,7 +313,10 @@ public class StateController {
 		/* extra verifications here, like minimun velocity.
 		   pass verification parameters in a struct or class */
 
-		this.successTutorial();
+		if(getPlace() == TUT4_SCREEN)
+			this.endedTutorial();
+		else
+			this.successTutorial();
 	}
 
 	public void rotateAnimation(float radius, int clockwise){
@@ -348,7 +351,7 @@ public class StateController {
 		if(getPlace() != OPTIONS_SCREEN)
 			return;
 
-		volume += power;
+		volume += (int)Mathf.Round(-power/2.0f);
 		volume  = Mathf.Max(0,   volume);
 		volume  = Mathf.Min(100, volume);
 
