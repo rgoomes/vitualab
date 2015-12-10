@@ -147,6 +147,8 @@ public class MainController : MonoBehaviour {
 
 		if(scaleFactor >= lowerFactor && scaleFactor <= upperFactor)
 			return;
+		if(scaleFactor > 1.5f)
+			return;
 
 		/* verify tutorial */
 		sc.checkTutorial(1 /* TUT0_SCREEN */);
@@ -158,9 +160,11 @@ public class MainController : MonoBehaviour {
 		/* rotation angle in degrees from the tenth frame to current frame */
 		float rotationAngle = curFrame.RotationAngle(ct.Frame(10), Vector.YAxis) * (180 / Mathf.PI);
 
-		const float minAngle = 10.0f;
-
-		if(Mathf.Abs(rotationAngle) > minAngle)
+		const float minAngle = 3.0f;
+		const float maxAngle = 15.0f;
+		if(Mathf.Abs(rotationAngle) < minAngle)
+			return;
+		if(Mathf.Abs(rotationAngle) > maxAngle)
 			return;
 
 		/* verify tutorial */
