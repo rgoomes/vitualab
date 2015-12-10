@@ -255,8 +255,13 @@ public class StateController {
 	}
 
 	public void updatePreviewPanel(int dir){
-		const float default_width  = 1920.0f;
 		const float images_between = 150.0f;
+
+		float default_width  = 1920.0f;
+		if(Mathf.Abs(Screen.width) == 1024 ||
+		   Mathf.Abs(Screen.width) == 800  ||
+		   Mathf.Abs(Screen.width) == 640)
+			default_width = 1440.0f;
 
 		float desvio = Screen.width*images_between / default_width * -dir;
 
