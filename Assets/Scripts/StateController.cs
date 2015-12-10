@@ -165,6 +165,12 @@ public class StateController {
 			return;
 
 		leapObject.GetComponent<Animation>().Play("lefthide");
+
+		Animation anim = backgroundImage.GetComponent<Animation>();
+		if(Screen.width == 1280)
+			anim["backgroundenter"].speed = 1.18f;
+		else
+			anim["backgroundenter"].speed = 1.0f;
 		backgroundImage.GetComponent<Animation>().Play("backgroundenter");
 
 		this.setPlace(TUT0_SCREEN);
