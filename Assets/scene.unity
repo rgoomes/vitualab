@@ -5125,6 +5125,7 @@ MonoBehaviour:
   discoCamera: {fileID: 771356379}
   bellSound: {fileID: 2142033211}
   backgroundImg: {fileID: 1395773298}
+  gameCamera: {fileID: 1092663839}
   sino: {fileID: 752139668}
   discodelezenne: {fileID: 2145071646}
 --- !u!4 &2109270739

@@ -17,6 +17,7 @@ public class MainController : MonoBehaviour {
 	public GameObject discoCamera;
 	public GameObject bellSound;
 	public GameObject backgroundImg;
+	public GameObject gameCamera;
 
 	// Declare here all objects
 	public GameObject sino;
@@ -221,9 +222,26 @@ public class MainController : MonoBehaviour {
 		return this.interacting;
 	}
 
+	void updateBackground(){
+		Camera cam = gameCamera.GetComponent<Camera>();
+
+		float a = cam.farClipPlane * 2.0f;
+		float A = cam.fieldOfView * 0.5f * Mathf.Deg2Rad;
+		float h = (Mathf.Tan(A) * a);
+		float w = (h / cam.pixelHeight) * cam.pixelWidth;
+
+		float xscale = (w*0.1f);
+		float zscale = (h*0.1f);
+
+		backgroundImg.transform.localScale = new Vector3(xscale, 100.0f, zscale);
+	}
+
 	void Update(){
 		/* update current frame */
 		curFrame = ct.Frame();
+
+		/* update background image size */
+		updateBackground();
 
 		/* default value: not interacting */
 		this.interacting = false;
