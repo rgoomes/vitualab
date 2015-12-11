@@ -22,6 +22,7 @@ public class MainController : MonoBehaviour {
 	// Declare here all objects
 	public GameObject sino;
 	public GameObject discodelezenne;
+	public GameObject carro;
 
 	StateController sc; /* for menus */
 	Controller ct; /* to control leapmotion */
@@ -38,6 +39,11 @@ public class MainController : MonoBehaviour {
 	string discoDesc = "O Disco de Delezenne é um dispositivo constituido por um anel circular " +
 		"em torno do qual está enrolado um fio de cobre que pode efectuar um movimento de rotação" +
 		" em torno de um eixo orientado segundo uma linha diametral do anel.";
+
+	string carroDesc = "O ''La Gabrielle'' trata-se de um modelo de carro concebido para o transporte de pedras " +
+		"lavradas. Acima de cada um dos dois eixos do carro elevam-se duas colunas, no interior das quais existe " +
+			" uma roda dentada accionada por uma manivela exterior. Os dentes desta roda actuam sobre os dentes distribuídos " +
+			"lateralmente ao longo duma barra rectilínea, instalada verticalmente no interior das colunas.";
 	
 	void Start(){
 		ct = new Controller();
@@ -51,7 +57,7 @@ public class MainController : MonoBehaviour {
 
 		ct.Config.Save();
 
-		descriptions = new List<string>(new string[] { sinoDesc, discoDesc });
+		descriptions = new List<string>(new string[] { sinoDesc, discoDesc, carroDesc });
 
 		sc = new StateController(controlPanel, optionsPanel, successPanel, congratzPanel, soundIcon,
 		                         successSound, descriptionText, previewImages, leapMotionObject,
@@ -59,6 +65,7 @@ public class MainController : MonoBehaviour {
 
 		sc.addLabObject(sino, descriptions[0]);
 		sc.addLabObject(discodelezenne, descriptions[1]);
+		sc.addLabObject(carro, descriptions[2]);
 	}
 
 	public StateController getStateController(){

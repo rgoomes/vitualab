@@ -19,7 +19,7 @@ public class ObjectsController {
 		objectsDecription = new List<string>();
 		cur_obj = 0;
 
-		scaleFactors = new List<float>(new float[] { 240.0f, 150.0f});
+		scaleFactors = new List<float>(new float[] { 240.0f, 150.0f, 100.0f });
 	}
 
 	public int objectsNumber(){
