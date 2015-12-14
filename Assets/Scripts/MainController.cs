@@ -18,9 +18,11 @@ public class MainController : MonoBehaviour {
 	public GameObject bellSound;
 	public GameObject backgroundImg;
 	public GameObject gameCamera;
+    public GameObject rodas_grandes;
+    public GameObject rodas_pequenas;
 
-	// Declare here all objects
-	public GameObject sino;
+    // Declare here all objects
+    public GameObject sino;
 	public GameObject discodelezenne;
 	public GameObject carro;
 
@@ -230,7 +232,8 @@ public class MainController : MonoBehaviour {
 		/* test interactions */
 		if(Input.GetKey(KeyCode.I) == true ){
 			interacting = sc.rotateDisco(arco, 20.0f);
-			sc.playBellSound();
+            sc.rotateRodasCarro(rodas_grandes, rodas_pequenas, carro, 20.0f);
+            sc.playBellSound();
 		}
 
 	}

@@ -3999,6 +3999,14 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6df1d77710b7414d85f4c7b8eb8ccf4, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1545998559 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: c6df1d77710b7414d85f4c7b8eb8ccf4, type: 3}
+  m_PrefabInternal: {fileID: 1545998558}
+--- !u!1 &1545998560 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100012, guid: c6df1d77710b7414d85f4c7b8eb8ccf4, type: 3}
+  m_PrefabInternal: {fileID: 1545998558}
 --- !u!1 &1549172802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,6 +5280,8 @@ MonoBehaviour:
   bellSound: {fileID: 2142033211}
   backgroundImg: {fileID: 1395773298}
   gameCamera: {fileID: 1092663839}
+  rodas_grandes: {fileID: 1545998559}
+  rodas_pequenas: {fileID: 1545998560}
   sino: {fileID: 752139668}
   discodelezenne: {fileID: 2145071646}
   carro: {fileID: 496970871}
