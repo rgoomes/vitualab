@@ -140,8 +140,11 @@ public class MainController : MonoBehaviour {
 				float angle = Circle.Radius;
 				interacting = sc.rotateDisco(arco, angle*clockwise);
 
-				/* verify tutorial */
-				if(Circle.State == Gesture.GestureState.STATESTOP)
+                /* carro move */
+                sc.rotateRodasCarro(rodas_grandes, rodas_pequenas, carro, 20.0f);
+
+                /* verify tutorial */
+                if (Circle.State == Gesture.GestureState.STATESTOP)
 					sc.checkTutorial(5 /* TUT4_SCREEN */);
 			} else if(g.Type == Gesture.GestureType.TYPESCREENTAP){
 				// TODO: Animate the bell
@@ -184,7 +187,7 @@ public class MainController : MonoBehaviour {
 			return;
 
 		/* verify tutorial */
-		if(Math.Abs(rotationAngle) > 12.0f)
+		if(Mathf.Abs(rotationAngle) > 12.0f)
 			sc.checkTutorial(2 /* TUT1_SCREEN */);
 
 		int isClockwise = (rotationAngle < 0) ? -1 : 1;
