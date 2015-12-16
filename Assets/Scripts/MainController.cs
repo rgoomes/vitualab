@@ -166,7 +166,8 @@ public class MainController : MonoBehaviour {
 			return;
 
 		/* verify tutorial */
-		sc.checkTutorial(1 /* TUT0_SCREEN */);
+		if(scaleFactor > 1.25f || scaleFactor < 0.8f)
+			sc.checkTutorial(1 /* TUT0_SCREEN */);
 
 		sc.scaleAnimation(scaleFactor);
 	}
@@ -183,7 +184,8 @@ public class MainController : MonoBehaviour {
 			return;
 
 		/* verify tutorial */
-		sc.checkTutorial(2 /* TUT1_SCREEN */);
+		if(Math.Abs(rotationAngle) > 12.0f)
+			sc.checkTutorial(2 /* TUT1_SCREEN */);
 
 		int isClockwise = (rotationAngle < 0) ? -1 : 1;
 		sc.rotateAnimation(rotationAngle, isClockwise);
