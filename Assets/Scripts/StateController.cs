@@ -236,7 +236,17 @@ public class StateController {
 
 		if(getLastPlace() != MAIN_SCREEN) {
 			showLeapmotion();
-			backgroundImage.GetComponent<Animation>().Play("backgroundmain");
+
+			Animation anim = backgroundImage.GetComponent<Animation>();
+			if(getLastPlace() == LABORATORY)
+				backgroundImage.GetComponent<Animation>().Play("new_background_from_main");
+			else if(getLastPlace() == TUT1_SCREEN){
+				anim["backgroundmain"].speed = 0.25f;
+				backgroundImage.GetComponent<Animation>().Play("backgroundmain");
+			} else {
+				anim["backgroundmain"].speed = 1.0f;
+				backgroundImage.GetComponent<Animation>().Play("backgroundmain");
+			}
 		} else
 			downshowLeapmotion();
 

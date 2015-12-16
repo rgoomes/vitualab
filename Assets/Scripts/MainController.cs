@@ -42,7 +42,7 @@ public class MainController : MonoBehaviour {
 
 	string carroDesc = "O ''La Gabrielle'' trata-se de um modelo de carro concebido para o transporte de pedras " +
 		"lavradas. Acima de cada um dos dois eixos do carro elevam-se duas colunas, no interior das quais existe " +
-			" uma roda dentada accionada por uma manivela exterior. Os dentes desta roda actuam sobre os dentes distribuídos " +
+			"uma roda dentada accionada por uma manivela exterior. Os dentes desta roda actuam sobre os dentes distribuídos " +
 			"lateralmente ao longo duma barra rectilínea, instalada verticalmente no interior das colunas.";
 	
 	void Start(){
@@ -164,7 +164,8 @@ public class MainController : MonoBehaviour {
 			return;
 
 		/* verify tutorial */
-		sc.checkTutorial(1 /* TUT0_SCREEN */);
+		if(scaleFactor < 0.85f || scaleFactor > 1.20f)
+			sc.checkTutorial(1 /* TUT0_SCREEN */);
 
 		sc.scaleAnimation(scaleFactor);
 	}
@@ -181,7 +182,8 @@ public class MainController : MonoBehaviour {
 			return;
 
 		/* verify tutorial */
-		sc.checkTutorial(2 /* TUT1_SCREEN */);
+		if(Mathf.Abs(rotationAngle) > 10.0f)
+			sc.checkTutorial(2 /* TUT1_SCREEN */);
 
 		int isClockwise = (rotationAngle < 0) ? -1 : 1;
 		sc.rotateAnimation(rotationAngle, isClockwise);
@@ -223,9 +225,9 @@ public class MainController : MonoBehaviour {
 
 		/* test sound */
 		if(Input.GetKey(KeyCode.H) == true )
-			sc.changeVolume(1);
+			sc.changeVolume(-2);
 		if(Input.GetKey(KeyCode.L) == true )
-			sc.changeVolume(-1);
+			sc.changeVolume(+2);
 
 		/* test interactions */
 		if(Input.GetKey(KeyCode.I) == true ){

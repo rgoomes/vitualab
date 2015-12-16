@@ -2852,7 +2852,7 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.35000002
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3541,6 +3541,7 @@ Animation:
   - {fileID: 7400000, guid: f372f44d33407804a9e862fa0e7325d9, type: 2}
   - {fileID: 7400000, guid: ce6caa2ff39d6fc47a4c6866974c762f, type: 2}
   - {fileID: 7400000, guid: 939fb73a107def5469e2461b6996456e, type: 2}
+  - {fileID: 7400000, guid: 1de7f958ddc5f504ca2deea122d23790, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
