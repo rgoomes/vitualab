@@ -335,6 +335,9 @@ public class StateController {
 		if(getPlace() != LABORATORY)
 			return;
 
+		if(oc.getCurObjPos() == 2 /* default disco pos */)
+			return;
+
 		oc.rotateObject(radius, clockwise);
 	}
 
@@ -411,6 +414,34 @@ public class StateController {
 		discoCamera.GetComponent<Bloom>().bloomIntensity = bloom;
 
 		return true;
+	}
+
+	public void rotateRodasCarro(GameObject rodas_grandes, GameObject rodas_pequenas, GameObject carro, float angle){
+		if (getPlace() != LABORATORY)
+			return;
+		if (oc.getCurObjPos() != 2 /* default carro pos */)
+			return;
+
+		float delta = Time.deltaTime * 5;
+		rodas_grandes.transform.Rotate(Vector3.back, (angle * delta) / 2);
+		rodas_pequenas.transform.Rotate(Vector3.back, angle * delta);
+
+		if (carro.transform.rotation.y >= 1 || carro.transform.rotation.y < 0.5 && carro.transform.rotation.y > -0.4)
+		{
+			if (carro.transform.rotation.y >= 1)
+				carro.transform.position = new Vector3(carro.transform.position.x - (1 * angle * delta), carro.transform.position.y, carro.transform.position.z);
+			else
+				carro.transform.position = new Vector3(carro.transform.position.x + (1 * angle * delta), carro.transform.position.y, carro.transform.position.z);
+		}
+		else if (carro.transform.rotation.y <= 0.5)
+		{
+			if (carro.transform.rotation.y >= 1 || carro.transform.rotation.y < -0.5 && carro.transform.rotation.y > -0.85)
+				carro.transform.position = new Vector3(carro.transform.position.x, carro.transform.position.y, carro.transform.position.z - (1 * angle * delta));
+			else
+				carro.transform.position = new Vector3(carro.transform.position.x, carro.transform.position.y, carro.transform.position.z + (1 * angle * delta));
+		}
+		else
+			carro.transform.position = new Vector3(carro.transform.position.x - (1 * angle * delta), carro.transform.position.y, carro.transform.position.z - (1 * angle * delta));
 	}
 
 	public void playBellSound(){

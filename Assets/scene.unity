@@ -545,6 +545,10 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 329805887}
+--- !u!1 &338682048 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: c6df1d77710b7414d85f4c7b8eb8ccf4, type: 3}
+  m_PrefabInternal: {fileID: 1545998558}
 --- !u!1 &342568884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,6 +3156,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8521c334b7ced5e4b89ab6af8907f4a3, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1302742715 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100012, guid: c6df1d77710b7414d85f4c7b8eb8ccf4, type: 3}
+  m_PrefabInternal: {fileID: 1545998558}
 --- !u!1 &1355160549
 GameObject:
   m_ObjectHideFlags: 0
@@ -5273,6 +5281,8 @@ MonoBehaviour:
   bellSound: {fileID: 2142033211}
   backgroundImg: {fileID: 1395773298}
   gameCamera: {fileID: 1092663839}
+  rodas_grandes: {fileID: 338682048}
+  rodas_pequenas: {fileID: 1302742715}
   sino: {fileID: 752139668}
   discodelezenne: {fileID: 2145071646}
   carro: {fileID: 496970871}

@@ -18,6 +18,8 @@ public class MainController : MonoBehaviour {
 	public GameObject bellSound;
 	public GameObject backgroundImg;
 	public GameObject gameCamera;
+	public GameObject rodas_grandes;
+	public GameObject rodas_pequenas;
 
 	// Declare here all objects
 	public GameObject sino;
@@ -138,6 +140,9 @@ public class MainController : MonoBehaviour {
 				float angle = Circle.Radius;
 				interacting = sc.rotateDisco(arco, angle*clockwise);
 
+				/* carro interaction */
+				sc.rotateRodasCarro(rodas_grandes, rodas_pequenas, carro, angle*clockwise);
+
 				/* verify tutorial */
 				if(Circle.State == Gesture.GestureState.STATESTOP)
 					sc.checkTutorial(5 /* TUT4_SCREEN */);
@@ -232,6 +237,7 @@ public class MainController : MonoBehaviour {
 		/* test interactions */
 		if(Input.GetKey(KeyCode.I) == true ){
 			interacting = sc.rotateDisco(arco, 20.0f);
+			sc.rotateRodasCarro(rodas_grandes, rodas_pequenas, carro, 20.0f);
 			sc.playBellSound();
 		}
 
